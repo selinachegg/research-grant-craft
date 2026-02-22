@@ -38,6 +38,10 @@
 |:---:|:---:|:---:|
 | ![Wizard intake](public/screenshots/wizard_intake.png) | ![Draft editor](public/screenshots/draft_editor.png) | ![Reviewer report](public/screenshots/reviewer_report.png) |
 
+| AI settings |
+|:---:|
+| ![AI settings](public/screenshots/settings.png) |
+
 ---
 
 ## Quickstart
@@ -61,15 +65,38 @@ npm run validate-pack   # validate all scheme pack JSON files
 
 ---
 
-## Mock mode (no API key required)
+## AI generation settings
 
-By default the app runs in **mock mode**: the LLM generation step returns
-static placeholder text and makes no outbound network requests. This means you
-can explore the full wizard → draft → reviewer report flow without configuring
-any external service.
+Click **AI settings** in the top navigation bar to configure how drafts are generated.
 
-To use a real language model, set your API endpoint and key in the application
-settings panel. See [PRIVACY.md](PRIVACY.md) for what is and is not transmitted.
+![AI settings](public/screenshots/settings.png)
+
+Two modes are available:
+
+### 🧪 Mock mode (default — no API key required)
+
+The app works out of the box without any API key. Mock mode generates a
+structured Markdown scaffold directly from your wizard answers — no outbound
+network requests, fully offline. This lets you explore the complete
+wizard → draft → reviewer report flow immediately.
+
+### ✨ Live AI mode
+
+Connect your own API key for AI-generated proposal text. Select a provider
+preset or enter a custom endpoint:
+
+| Provider | Endpoint | Notes |
+|----------|----------|-------|
+| **OpenAI** (`gpt-4o`, `gpt-4o-mini`) | `https://api.openai.com/v1` | Get a key at [platform.openai.com](https://platform.openai.com/api-keys) |
+| **Ollama** (local, free) | `http://localhost:11434/v1` | Install [Ollama](https://ollama.com), run `ollama pull llama3` — no data leaves your machine |
+| **Custom** | Any URL | Any OpenAI-compatible endpoint (`/chat/completions`) |
+
+Use the **Test connection** button on the settings page to verify your key works
+before generating a full draft.
+
+> **Privacy:** In Live AI mode your draft text and wizard answers are sent to
+> the provider you configure. In Mock mode nothing leaves your browser.
+> See [PRIVACY.md](PRIVACY.md) for full details.
 
 ---
 
