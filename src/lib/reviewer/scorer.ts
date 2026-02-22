@@ -114,21 +114,21 @@ const STRUCTURE_CHECK_DEFS = [
   {
     id: 'has_excellence_heading',
     label: 'Section 1 (Excellence) heading present',
-    pattern: /^#+\s*(?:1[.\s]|Section\s+1\s*[.:]?\s*)?Excellence\b/im,
+    pattern: /^#+\s*(?:1[.\s]\s*|Section\s+1\s*[.:]?\s*)?Excellence\b/im,
     criterion: 'excellence' as CriterionId,
     penalty: -0.05,
   },
   {
     id: 'has_impact_heading',
     label: 'Section 2 (Impact) heading present',
-    pattern: /^#+\s*(?:2[.\s]|Section\s+2\s*[.:]?\s*)?Impact\b/im,
+    pattern: /^#+\s*(?:2[.\s]\s*|Section\s+2\s*[.:]?\s*)?Impact\b/im,
     criterion: 'impact' as CriterionId,
     penalty: -0.05,
   },
   {
     id: 'has_implementation_heading',
     label: 'Section 3 (Implementation) heading present',
-    pattern: /^#+\s*(?:3[.\s]|Section\s+3\s*[.:]?\s*)?Implementation\b/im,
+    pattern: /^#+\s*(?:3[.\s]\s*|Section\s+3\s*[.:]?\s*)?Implementation\b/im,
     criterion: 'implementation' as CriterionId,
     penalty: -0.05,
   },
@@ -186,9 +186,9 @@ export function runStructureChecks(draft: string): {
   }
 
   // Section order check
-  const excellencePos     = draft.search(/^#+\s*(?:1[.\s])?Excellence\b/im);
-  const impactPos         = draft.search(/^#+\s*(?:2[.\s])?Impact\b/im);
-  const implementationPos = draft.search(/^#+\s*(?:3[.\s])?Implementation\b/im);
+  const excellencePos     = draft.search(/^#+\s*(?:1[.\s]\s*)?Excellence\b/im);
+  const impactPos         = draft.search(/^#+\s*(?:2[.\s]\s*)?Impact\b/im);
+  const implementationPos = draft.search(/^#+\s*(?:3[.\s]\s*)?Implementation\b/im);
   const orderCorrect =
     excellencePos !== -1 &&
     impactPos !== -1 &&

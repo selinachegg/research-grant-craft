@@ -466,7 +466,9 @@ describe('generateReviewerReport()', () => {
     const r2 = generateReviewerReport(FULL_DRAFT, TEST_SCHEME);
     expect(r1.overallScore).toBe(r2.overallScore);
     expect(r1.overallPassed).toBe(r2.overallPassed);
-    expect(r1.markdownReport).toBe(r2.markdownReport);
+    // Strip all timestamp occurrences before comparing — they tick between calls
+    const stripTimestamp = (s: string) => s.replace(/\*\*Generated:\*\*[^\n]*/g, '**Generated:**');
+    expect(stripTimestamp(r1.markdownReport)).toBe(stripTimestamp(r2.markdownReport));
     expect(r1.missingItems.map((m) => m.id)).toEqual(r2.missingItems.map((m) => m.id));
   });
 

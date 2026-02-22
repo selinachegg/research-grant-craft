@@ -187,7 +187,7 @@ function renderTransparencyNote(report: ReviewerReport): string {
     'For each criterion:',
     '  rawCoverage        = Σ(signal.weight × signal.confidence) / Σ(signal.weight)',
     '  adjustedCoverage   = rawCoverage + structureAdjustment',
-    '  score              = round(adjustedCoverage × 5 × 2) / 2   (0.5 steps)',
+    '  score              = coverageToScore(adjustedCoverage)   →  round(adjustedCoverage × 5 × 2) / 2   (0.5 steps)',
     '',
     'Score → threshold mapping:',
     '  score ≥ 3.0 per criterion  AND  total ≥ 10.0  →  PASS',
