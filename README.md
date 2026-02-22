@@ -38,10 +38,6 @@
 |:---:|:---:|:---:|
 | ![Wizard intake](public/screenshots/wizard_intake.png) | ![Draft editor](public/screenshots/draft_editor.png) | ![Reviewer report](public/screenshots/reviewer_report.png) |
 
-| AI settings |
-|:---:|
-| ![AI settings](public/screenshots/settings.png) |
-
 ---
 
 ## Quickstart
