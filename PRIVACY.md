@@ -83,4 +83,4 @@ or use the Security Advisory channel described in [`SECURITY.md`](SECURITY.md).
 
 ---
 
-*Last updated: 2024*
+*Last updated: 2026*

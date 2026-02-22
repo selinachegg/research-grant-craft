@@ -175,4 +175,4 @@ GitHub Security Advisory channel described in [SECURITY.md](SECURITY.md).
 
 ## License
 
-[MIT](LICENSE) © 2024 Research Grant Craft Contributors
+[MIT](LICENSE) © 2026 Research Grant Craft Contributors
