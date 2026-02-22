@@ -28,6 +28,9 @@ export default function RootLayout({
               <a href="/wizard" className="hover:text-slate-900 transition-colors">
                 New proposal
               </a>
+              <a href="/settings" className="hover:text-slate-900 transition-colors">
+                AI settings
+              </a>
               <a
                 href="https://github.com/selinachegg/research-grant-craft"
                 target="_blank"
