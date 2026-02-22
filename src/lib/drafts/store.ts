@@ -71,3 +71,14 @@ export function loadDraftIndex(): DraftMeta[] {
     return [];
   }
 }
+
+export function deleteDraft(draftId: string): void {
+  if (typeof window === 'undefined') return;
+  try {
+    window.localStorage.removeItem(draftKey(draftId));
+    const index = loadDraftIndex().filter((m) => m.draftId !== draftId);
+    window.localStorage.setItem(INDEX_KEY, JSON.stringify(index));
+  } catch {
+    // ignore
+  }
+}

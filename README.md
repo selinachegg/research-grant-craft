@@ -34,9 +34,9 @@
 
 ## Screenshots
 
-| Wizard intake | Draft editor | Reviewer report | AI settings |
-|:---:|:---:|:---:|:---:|
-| ![Wizard intake](public/screenshots/wizard_intake.png) | ![Draft editor](public/screenshots/draft_editor.png) | ![Reviewer report](public/screenshots/reviewer_report.png) | ![AI settings](public/screenshots/settings.png) |
+| Wizard intake | Draft editor | Reviewer report |
+|:---:|:---:|:---:|
+| ![Wizard intake](public/screenshots/wizard_intake.png) | ![Draft editor](public/screenshots/draft_editor.png) | ![Reviewer report](public/screenshots/reviewer_report.png) |
 
 ---
 

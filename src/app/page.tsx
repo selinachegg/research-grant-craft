@@ -3,9 +3,9 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { loadWizardIndex } from '@/lib/wizard/store';
+import { loadWizardIndex, deleteWizardState } from '@/lib/wizard/store';
 import type { WizardMeta } from '@/lib/wizard/store';
-import { loadDraftIndex } from '@/lib/drafts/store';
+import { loadDraftIndex, deleteDraft } from '@/lib/drafts/store';
 import type { DraftMeta } from '@/lib/drafts/store';
 
 // ---------------------------------------------------------------------------
@@ -47,9 +47,21 @@ function ProposalsQueue() {
     setDrafts(loadDraftIndex());
   }, []);
 
+  function handleDeleteWizard(wizardId: string, label: string) {
+    if (!confirm(`Delete "${label}"? This cannot be undone.`)) return;
+    deleteWizardState(wizardId);
+    setWizards((prev) => prev.filter((w) => w.wizardId !== wizardId));
+  }
+
+  function handleDeleteDraft(draftId: string, title: string) {
+    if (!confirm(`Delete "${title}"? This cannot be undone.`)) return;
+    deleteDraft(draftId);
+    setDrafts((prev) => prev.filter((d) => d.draftId !== draftId));
+  }
+
   // In-progress intakes: no draft linked yet
   const inProgress = wizards.filter((w) => !w.linkedDraftId);
-  // Completed drafts
+  // Completed drafts, most recent first
   const sorted = [...drafts].sort(
     (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime(),
   );
@@ -66,30 +78,40 @@ function ProposalsQueue() {
           <p className="text-xs font-medium text-slate-500 uppercase tracking-wide mb-2">
             In progress
           </p>
-          {inProgress.map((w) => (
-            <div
-              key={w.wizardId}
-              className="bg-white border border-slate-200 rounded-xl p-4 flex items-center justify-between gap-4"
-            >
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-slate-900 truncate">
-                  {w.acronym && w.fullTitle
-                    ? `${w.acronym} — ${w.fullTitle}`
-                    : w.acronym || w.fullTitle || 'Untitled proposal'}
-                </p>
-                <p className="text-xs text-slate-400 mt-0.5">{timeAgo(w.updatedAt)}</p>
-                <div className="mt-2 max-w-xs">
-                  <ProposalLabel step={w.currentStep} total={5} />
+          {inProgress.map((w) => {
+            const label = w.acronym && w.fullTitle
+              ? `${w.acronym} — ${w.fullTitle}`
+              : w.acronym || w.fullTitle || 'Untitled proposal';
+            return (
+              <div
+                key={w.wizardId}
+                className="bg-white border border-slate-200 rounded-xl p-4 flex items-center justify-between gap-4"
+              >
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-slate-900 truncate">{label}</p>
+                  <p className="text-xs text-slate-400 mt-0.5">{timeAgo(w.updatedAt)}</p>
+                  <div className="mt-2 max-w-xs">
+                    <ProposalLabel step={w.currentStep} total={5} />
+                  </div>
+                </div>
+                <div className="flex gap-2 shrink-0">
+                  <Link
+                    href={`/wizard/${w.wizardId}`}
+                    className="px-4 py-1.5 text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200 rounded-lg hover:bg-blue-100 transition-colors"
+                  >
+                    Continue →
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteWizard(w.wizardId, label)}
+                    className="px-3 py-1.5 text-xs font-medium border border-red-200 text-red-600 rounded-lg hover:bg-red-50 transition-colors"
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
-              <Link
-                href={`/wizard/${w.wizardId}`}
-                className="shrink-0 px-4 py-1.5 text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200 rounded-lg hover:bg-blue-100 transition-colors"
-              >
-                Continue intake →
-              </Link>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
 
@@ -123,6 +145,13 @@ function ProposalsQueue() {
                 >
                   Review →
                 </Link>
+                <button
+                  type="button"
+                  onClick={() => handleDeleteDraft(d.draftId, d.title)}
+                  className="px-3 py-1.5 text-xs font-medium border border-red-200 text-red-600 rounded-lg hover:bg-red-50 transition-colors"
+                >
+                  Delete
+                </button>
               </div>
             </div>
           ))}
