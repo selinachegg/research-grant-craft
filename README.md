@@ -34,11 +34,9 @@
 
 ## Screenshots
 
-> *Screenshots will be added once the UI is stable. Contributions welcome.*
-
 | Wizard intake | Draft editor | Reviewer report |
 |:---:|:---:|:---:|
-| *(coming soon)* | *(coming soon)* | *(coming soon)* |
+| ![Wizard intake](public/screenshots/wizard_intake.png) | ![Draft editor](public/screenshots/draft_editor.png) | ![Reviewer report](public/screenshots/reviewer_report.png) |
 
 ---
 
