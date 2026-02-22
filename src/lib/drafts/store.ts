@@ -5,6 +5,8 @@
  * A draft index is maintained under `rgc_draft_index`.
  */
 
+export type DraftStatus = 'in-progress' | 'completed';
+
 export interface DraftMeta {
   draftId: string;
   title: string;
@@ -14,6 +16,8 @@ export interface DraftMeta {
   updatedAt: string;
   /** The wizard session that generated this draft (used for Regenerate). */
   wizardId?: string;
+  /** Lifecycle status — undefined / 'in-progress' means still being worked on. */
+  status?: DraftStatus;
 }
 
 export interface Draft extends DraftMeta {
@@ -52,6 +56,8 @@ export function saveDraft(draft: Draft): void {
       wordCount: draft.content.trim().split(/\s+/).filter(Boolean).length,
       createdAt: draft.createdAt,
       updatedAt: updated.updatedAt,
+      wizardId: draft.wizardId,
+      status: draft.status,
     };
     if (existing >= 0) index[existing] = meta;
     else index.unshift(meta);
@@ -69,6 +75,34 @@ export function loadDraftIndex(): DraftMeta[] {
     return JSON.parse(raw) as DraftMeta[];
   } catch {
     return [];
+  }
+}
+
+/**
+ * Update only the status of a draft without needing the full content.
+ * Touches both the full draft record and the index entry.
+ */
+export function setDraftStatus(draftId: string, status: DraftStatus): void {
+  if (typeof window === 'undefined') return;
+  try {
+    // Update full record
+    const raw = window.localStorage.getItem(draftKey(draftId));
+    if (raw) {
+      const draft = JSON.parse(raw) as Draft;
+      window.localStorage.setItem(
+        draftKey(draftId),
+        JSON.stringify({ ...draft, status, updatedAt: new Date().toISOString() }),
+      );
+    }
+    // Update index
+    const index = loadDraftIndex();
+    const entry = index.find((m) => m.draftId === draftId);
+    if (entry) {
+      entry.status = status;
+      window.localStorage.setItem(INDEX_KEY, JSON.stringify(index));
+    }
+  } catch {
+    // ignore
   }
 }
 

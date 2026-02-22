@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { loadWizardIndex, deleteWizardState } from '@/lib/wizard/store';
 import type { WizardMeta } from '@/lib/wizard/store';
-import { loadDraftIndex, deleteDraft } from '@/lib/drafts/store';
+import { loadDraftIndex, deleteDraft, setDraftStatus } from '@/lib/drafts/store';
 import type { DraftMeta } from '@/lib/drafts/store';
 
 // ---------------------------------------------------------------------------
@@ -86,29 +86,66 @@ function IntakeCard({ w, onDelete }: { w: WizardMeta; onDelete: () => void }) {
 }
 
 // ---------------------------------------------------------------------------
-// Proposal card — completed draft
+// Proposal card — draft (in-progress or completed)
 // ---------------------------------------------------------------------------
 
-function DraftCard({ d, onDelete }: { d: DraftMeta; onDelete: () => void }) {
+function DraftCard({
+  d,
+  onDelete,
+  onToggleComplete,
+}: {
+  d: DraftMeta;
+  onDelete: () => void;
+  onToggleComplete: () => void;
+}) {
+  const done = d.status === 'completed';
+
   return (
-    <div className="card card-hover p-5 flex flex-col gap-3">
+    <div className={`card p-5 flex flex-col gap-3 transition-all ${done ? 'opacity-80' : 'card-hover'}`}>
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <p className="font-medium text-slate-900 dark:text-slate-100 text-sm truncate">{d.title}</p>
+          <p className={`font-medium text-sm truncate ${done ? 'text-slate-500 dark:text-slate-400 line-through decoration-1' : 'text-slate-900 dark:text-slate-100'}`}>
+            {d.title}
+          </p>
           <p className="text-xs text-slate-400 mt-0.5">
             {d.wordCount.toLocaleString()} words · {timeAgo(d.updatedAt)}
           </p>
         </div>
-        <span className="badge badge-brand shrink-0">Draft</span>
+        {done
+          ? <span className="badge badge-green shrink-0">✓ Completed</span>
+          : <span className="badge badge-brand shrink-0">Draft</span>
+        }
       </div>
 
-      <div className="flex items-center gap-2 pt-1">
-        <Link href={`/editor/${d.draftId}`} className="btn-secondary text-xs py-1.5">
-          Edit
-        </Link>
-        <Link href={`/review/${d.draftId}`} className="btn-primary text-xs py-1.5">
-          Review →
-        </Link>
+      <div className="flex items-center gap-2 pt-1 flex-wrap">
+        {!done && (
+          <>
+            <Link href={`/editor/${d.draftId}`} className="btn-secondary text-xs py-1.5">
+              Edit
+            </Link>
+            <Link href={`/review/${d.draftId}`} className="btn-primary text-xs py-1.5">
+              Review →
+            </Link>
+          </>
+        )}
+        {done && (
+          <Link href={`/editor/${d.draftId}`} className="btn-secondary text-xs py-1.5">
+            View / Edit
+          </Link>
+        )}
+
+        <button
+          type="button"
+          onClick={onToggleComplete}
+          className={`text-xs py-1.5 px-3 rounded-xl border font-medium transition-colors ${
+            done
+              ? 'border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 hover:border-amber-300 dark:hover:border-amber-700 hover:text-amber-600 dark:hover:text-amber-400'
+              : 'border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/40'
+          }`}
+        >
+          {done ? '↺ Reopen' : '✓ Mark done'}
+        </button>
+
         <button type="button" onClick={onDelete} className="btn-danger ml-auto">
           Delete
         </button>
@@ -121,7 +158,7 @@ function DraftCard({ d, onDelete }: { d: DraftMeta; onDelete: () => void }) {
 // Proposals queue
 // ---------------------------------------------------------------------------
 
-type Filter = 'all' | 'progress' | 'drafts';
+type Filter = 'all' | 'progress' | 'drafts' | 'completed';
 
 function ProposalsQueue() {
   const [wizards, setWizards] = useState<WizardMeta[]>([]);
@@ -134,9 +171,11 @@ function ProposalsQueue() {
   }, []);
 
   const inProgress = wizards.filter((w) => !w.linkedDraftId);
-  const sortedDrafts = [...drafts].sort(
+  const sorted = [...drafts].sort(
     (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime(),
   );
+  const activeDrafts    = sorted.filter((d) => d.status !== 'completed');
+  const completedDrafts = sorted.filter((d) => d.status === 'completed');
 
   function deleteWizard(id: string) {
     if (!confirm('Delete this intake? This cannot be undone.')) return;
@@ -150,38 +189,46 @@ function ProposalsQueue() {
     setDrafts((p) => p.filter((d) => d.draftId !== id));
   }
 
-  const hasAny = inProgress.length > 0 || sortedDrafts.length > 0;
-  if (!hasAny) return null;
+  function toggleComplete(id: string) {
+    const current = drafts.find((d) => d.draftId === id);
+    if (!current) return;
+    const next = current.status === 'completed' ? 'in-progress' : 'completed';
+    setDraftStatus(id, next);
+    setDrafts((p) => p.map((d) => d.draftId === id ? { ...d, status: next } : d));
+  }
 
-  const tabs: { key: Filter; label: string; count: number }[] = [
-    { key: 'all', label: 'All', count: inProgress.length + sortedDrafts.length },
-    { key: 'progress', label: 'In progress', count: inProgress.length },
-    { key: 'drafts', label: 'Drafts', count: sortedDrafts.length },
+  const total = inProgress.length + sorted.length;
+  if (total === 0) return null;
+
+  const tabs: { key: Filter; label: string; count: number; color?: string }[] = [
+    { key: 'all',       label: 'All',         count: total },
+    { key: 'progress',  label: 'In progress', count: inProgress.length },
+    { key: 'drafts',    label: 'Drafts',      count: activeDrafts.length },
+    { key: 'completed', label: '✓ Completed', count: completedDrafts.length },
   ];
 
-  const showIntakes = filter === 'all' || filter === 'progress';
-  const showDrafts  = filter === 'all' || filter === 'drafts';
+  const showIntakes   = filter === 'all' || filter === 'progress';
+  const showActive    = filter === 'all' || filter === 'drafts';
+  const showCompleted = filter === 'all' || filter === 'completed';
 
   return (
     <section className="mb-16">
       <div className="flex items-center justify-between gap-4 mb-5">
         <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">My proposals</h2>
-        <div className="flex items-center gap-2">
-          {sortedDrafts.length > 0 && (
-            <button
-              type="button"
-              onClick={() => exportCSV(sortedDrafts)}
-              className="btn-secondary text-xs py-1.5"
-            >
-              <DownloadIcon className="w-3.5 h-3.5" />
-              Export CSV
-            </button>
-          )}
-        </div>
+        {sorted.length > 0 && (
+          <button
+            type="button"
+            onClick={() => exportCSV(sorted)}
+            className="btn-secondary text-xs py-1.5"
+          >
+            <DownloadIcon className="w-3.5 h-3.5" />
+            Export CSV
+          </button>
+        )}
       </div>
 
       {/* Filter tabs */}
-      <div className="flex gap-1 p-1 bg-slate-100 dark:bg-slate-800 rounded-xl w-fit mb-5">
+      <div className="flex gap-1 p-1 bg-slate-100 dark:bg-slate-800 rounded-xl w-fit mb-5 flex-wrap">
         {tabs.map((t) => (
           <button
             key={t.key}
@@ -189,14 +236,18 @@ function ProposalsQueue() {
             onClick={() => setFilter(t.key)}
             className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all duration-150 ${
               filter === t.key
-                ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-sm'
+                ? t.key === 'completed'
+                  ? 'bg-emerald-600 text-white shadow-sm'
+                  : 'bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-sm'
                 : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200'
             }`}
           >
             {t.label}
             {t.count > 0 && (
               <span className={`ml-1.5 px-1.5 py-0.5 rounded-full text-xs ${
-                filter === t.key
+                filter === t.key && t.key === 'completed'
+                  ? 'bg-emerald-500 text-white'
+                  : filter === t.key
                   ? 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
                   : 'bg-slate-200 dark:bg-slate-700 text-slate-500'
               }`}>
@@ -211,10 +262,32 @@ function ProposalsQueue() {
         {showIntakes && inProgress.map((w) => (
           <IntakeCard key={w.wizardId} w={w} onDelete={() => deleteWizard(w.wizardId)} />
         ))}
-        {showDrafts && sortedDrafts.map((d) => (
-          <DraftCard key={d.draftId} d={d} onDelete={() => deleteDraftItem(d.draftId, d.title)} />
+        {showActive && activeDrafts.map((d) => (
+          <DraftCard
+            key={d.draftId}
+            d={d}
+            onDelete={() => deleteDraftItem(d.draftId, d.title)}
+            onToggleComplete={() => toggleComplete(d.draftId)}
+          />
+        ))}
+        {showCompleted && completedDrafts.map((d) => (
+          <DraftCard
+            key={d.draftId}
+            d={d}
+            onDelete={() => deleteDraftItem(d.draftId, d.title)}
+            onToggleComplete={() => toggleComplete(d.draftId)}
+          />
         ))}
       </div>
+
+      {/* Empty state for completed filter */}
+      {filter === 'completed' && completedDrafts.length === 0 && (
+        <div className="text-center py-12 text-slate-400 dark:text-slate-500">
+          <div className="text-4xl mb-3">✓</div>
+          <p className="text-sm font-medium mb-1">No completed proposals yet</p>
+          <p className="text-xs">When you finish a draft, click <strong>Mark done</strong> on its card.</p>
+        </div>
+      )}
     </section>
   );
 }
