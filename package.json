@@ -1,0 +1,47 @@
+{
+  "name": "research-grant-craft",
+  "version": "0.1.0",
+  "description": "Open-source grant proposal wizard + reviewer report for researchers.",
+  "keywords": ["grants", "research", "horizon-europe", "proposal", "ai", "open-source", "academic"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/selinachegg/research-grant-craft"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "jest --passWithNoTests",
+    "test:watch": "jest --watch",
+    "validate-pack": "node scripts/validate-pack.js",
+    "validate-pack:single": "node scripts/validate-pack.js",
+    "export-draft": "node scripts/export-draft.js"
+  },
+  "dependencies": {
+    "next": "14.2.10",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-markdown": "^9.0.1",
+    "remark-gfm": "^4.0.0",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@types/uuid": "^10.0.0",
+    "typescript": "^5.4.5",
+    "tailwindcss": "^3.4.4",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.10",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.12",
+    "ts-jest": "^29.1.4",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0"
+  }
+}

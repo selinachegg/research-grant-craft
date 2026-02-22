@@ -1,0 +1,94 @@
+{
+  "_comment": "Sample wizard input for GrantCraft. This data feeds the draft generator. Edit and use as a starting point.",
+  "schemeId": "horizon_europe_ria_ia",
+  "title": "Adaptive AI-Driven Precision Agriculture for Climate Resilience",
+  "acronym": "AGRI-ADAPT",
+  "abstract": "AGRI-ADAPT will develop and validate an open, AI-powered decision-support platform that enables small- and medium-sized farms across diverse European agroclimatic zones to adapt their crop management practices in real time as climate conditions shift. The platform integrates heterogeneous Earth Observation data, IoT sensor streams from field deployments, and local agronomic knowledge bases to generate site-specific, temporally adaptive recommendations for irrigation, fertilisation, pest management, and variety selection. By targeting farms operating at TRL 2–4 readiness for digital tools and coupling AI-driven analytics with participatory co-design involving farming communities and extension services, AGRI-ADAPT will bridge the gap between cutting-edge agricultural AI research and real-world adoption at scale. The project will demonstrate the platform across six pilot sites in four EU Member States, covering Mediterranean, Atlantic, Continental, and Boreal agroclimatic contexts, and produce fully open datasets, open-source models, and validated decision protocols ready for uptake by public advisory services and agricultural technology providers.",
+  "keywords": [
+    "precision agriculture",
+    "climate adaptation",
+    "AI decision support",
+    "Earth observation",
+    "IoT",
+    "crop management",
+    "food security",
+    "digital farming",
+    "open science",
+    "participatory co-design"
+  ],
+  "trl": {
+    "start": 3,
+    "end": 6,
+    "note": "Core AI engine currently at TRL 3 (proof of concept in laboratory). Target is TRL 6 (validated in operationally relevant pilot environments) by project end."
+  },
+  "consortiumType": "consortium",
+  "duration": 48,
+  "budgetRange": "2m_5m",
+  "estimatedBudget": 3800000,
+  "currency": "EUR",
+  "targetOutcomes": "1. Open, validated AI-powered crop management platform demonstrated at TRL 6 across ≥6 EU pilot sites.\n2. ≥15 peer-reviewed publications (all open access), including ≥3 in top-10 agricultural/AI journals.\n3. Open-source software stack released under MIT licence with full documentation.\n4. ≥5 FAIR-compliant datasets deposited in domain repositories (Zenodo, PANGAEA).\n5. Adoption by ≥3 national/regional agricultural advisory services post-project.\n6. Measurable reduction in water use (target: ≥15%) and fertiliser input (target: ≥10%) at pilot farms.\n7. Training of ≥200 farmers and ≥50 agronomists in use of AI decision-support tools.",
+  "stakeholders": [
+    "Small and medium-sized farms (primary end-users)",
+    "National and regional agricultural advisory services (AKIS — Agricultural Knowledge and Innovation Systems)",
+    "EU and national food safety authorities",
+    "Earth observation data providers (Copernicus / ESA)",
+    "Agri-tech SMEs and precision farming technology vendors",
+    "Rural community organisations and farmer cooperatives",
+    "European Commission DG AGRI / EIP-AGRI network",
+    "Academic community: agronomy, remote sensing, machine learning, social sciences"
+  ],
+  "partners": [
+    {
+      "name": "Wageningen University & Research",
+      "acronym": "WUR",
+      "country": "NL",
+      "type": "University",
+      "role": "Project Coordinator; AI/ML model development; agronomy expertise",
+      "personMonths": 72
+    },
+    {
+      "name": "Italian National Research Council – Institute of BioEconomy",
+      "acronym": "CNR-IBE",
+      "country": "IT",
+      "type": "Research Institute",
+      "role": "Earth Observation integration; Mediterranean pilot site lead",
+      "personMonths": 48
+    },
+    {
+      "name": "Andalusian Institute of Agricultural Research and Training (IFAPA)",
+      "acronym": "IFAPA",
+      "country": "ES",
+      "type": "Public Research Organisation",
+      "role": "Irrigation and water management; Southern pilot site",
+      "personMonths": 36
+    },
+    {
+      "name": "LUKE — Natural Resources Institute Finland",
+      "acronym": "LUKE",
+      "country": "FI",
+      "type": "Research Institute",
+      "role": "Boreal/Northern agroclimatic pilot; phenology modelling",
+      "personMonths": 36
+    },
+    {
+      "name": "SmartFarm Technologies GmbH",
+      "acronym": "SFT",
+      "country": "DE",
+      "type": "SME",
+      "role": "IoT sensor hardware integration; platform commercialisation; IA exploitation",
+      "personMonths": 48
+    },
+    {
+      "name": "European Federation of Farmers and Agri-Cooperatives",
+      "acronym": "EFFA",
+      "country": "BE",
+      "type": "NGO / Stakeholder Organisation",
+      "role": "Farmer co-design; dissemination to farming communities; policy liaison",
+      "personMonths": 24
+    }
+  ],
+  "callReference": "HORIZON-CL6-2025-FARM2FORK-01-04",
+  "callTopic": "AI and data-driven tools for climate-resilient and sustainable agriculture",
+  "actionType": "RIA",
+  "fundingRate": 100
+}

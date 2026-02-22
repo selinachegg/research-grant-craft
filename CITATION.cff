@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: >
+  If you use Research Grant Craft in your research workflow or reference it in a
+  publication, please cite it using the metadata below.
+type: software
+title: "Research Grant Craft"
+version: 0.1.0
+date-released: "2024-01-01"
+abstract: >
+  Research Grant Craft is an open-source, privacy-first web application that
+  helps researchers structure and iteratively improve grant proposals using
+  scheme-specific guidance and heuristic evaluation criteria. It features a
+  wizard intake flow, AI-assisted draft generation (with a mock mode that
+  requires no API keys), a deterministic heuristic reviewer report aligned to
+  funding-body rubrics, and an extensible scheme-pack system for different
+  national and international funding programmes.
+license: MIT
+repository-code: "https://github.com/selinachegg/research-grant-craft"
+url: "https://github.com/selinachegg/research-grant-craft"
+keywords:
+  - grant writing
+  - research proposals
+  - Horizon Europe
+  - open science
+  - AI writing assistant
+  - academic tools
+authors:
+  - name: "Research Grant Craft Contributors"
+    alias: "selinachegg"
+    website: "https://github.com/selinachegg"

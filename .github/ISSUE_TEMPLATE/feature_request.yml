@@ -1,0 +1,63 @@
+name: Feature Request
+description: Suggest a new feature or improvement for Research Grant Craft.
+title: "[Feature]: "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting an improvement.
+        Please describe the problem you are trying to solve, not just the solution —
+        this helps maintainers understand the context and find the best approach.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: >
+        Describe the situation or gap that motivates this request.
+        Who is affected, and how?
+      placeholder: "As a researcher submitting an ANR proposal, I cannot find a scheme pack for the French national programme..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: Describe the feature or change you would like to see.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Have you considered any workarounds or alternative approaches?
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which part of the app does this affect?
+      options:
+        - Wizard (intake form)
+        - Draft editor
+        - Reviewer report
+        - Scheme packs
+        - LLM / AI generation
+        - Export / download
+        - Privacy / data handling
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission checklist
+      options:
+        - label: I searched existing issues and this feature has not been requested before.
+          required: true
+        - label: This feature aligns with the project's local-first, privacy-first goals.
+          required: false

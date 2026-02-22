@@ -1,0 +1,121 @@
+name: New Scheme Pack
+description: Request or propose a new funding scheme pack for Research Grant Craft.
+title: "[Scheme Pack]: "
+labels: ["scheme-pack", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for proposing a new scheme pack!
+        Please fill in all fields below. Scheme packs require accurate information
+        about the funding programme's criteria and structure to be useful.
+
+        Before opening this issue, please read:
+        - [`docs/SCHEME_PACK_SPEC.md`](https://github.com/selinachegg/research-grant-craft/blob/main/docs/SCHEME_PACK_SPEC.md)
+        - The intellectual property guidance in that document.
+
+  - type: input
+    id: scheme_name
+    attributes:
+      label: Scheme name
+      description: Full, official name of the funding programme and grant type.
+      placeholder: "e.g. ANR Projet de Recherche Collaborative (PRC)"
+    validations:
+      required: true
+
+  - type: input
+    id: source_url
+    attributes:
+      label: URL to official call documentation or template
+      description: Direct link to the official guidance document, template, or work programme.
+      placeholder: "https://anr.fr/..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: region
+    attributes:
+      label: Country / region
+      options:
+        - EU (Horizon Europe / ERC)
+        - France (ANR)
+        - Switzerland (SNF)
+        - Luxembourg (FNR)
+        - Germany (DFG)
+        - United Kingdom (UKRI)
+        - United States (NIH / NSF)
+        - Other EU member state
+        - Other (international)
+    validations:
+      required: true
+
+  - type: textarea
+    id: required_sections
+    attributes:
+      label: Required proposal sections and page limits
+      description: List each mandatory section with its page or word limit if specified.
+      placeholder: |
+        - Scientific objectives (max 2 pages)
+        - State of the art (max 3 pages)
+        - Methodology (max 5 pages)
+        - Impact and valorisation (max 2 pages)
+        - Management and consortium (max 2 pages)
+    validations:
+      required: true
+
+  - type: textarea
+    id: evaluation_criteria
+    attributes:
+      label: Evaluation criteria and weights
+      description: >
+        List the evaluation criteria, their weights or score ranges, and the
+        minimum passing threshold per criterion. Copy from the official
+        evaluation grid if possible (check IP note below).
+      placeholder: |
+        Criterion 1: Scientific quality (max 40 points, min 20 to pass)
+        Criterion 2: Innovation (max 30 points, min 15 to pass)
+        Criterion 3: Impact and valorisation (max 30 points, min 15 to pass)
+    validations:
+      required: true
+
+  - type: textarea
+    id: submission_constraints
+    attributes:
+      label: Submission constraints
+      description: >
+        Any eligibility rules, consortium requirements, deadline structure,
+        or other constraints relevant to proposal preparation.
+      placeholder: |
+        - Minimum 2 French research organisations
+        - At least one SME partner recommended
+        - Budget ceiling: €500k per partner
+        - Submission via ANR portal only
+
+  - type: textarea
+    id: ip_note
+    attributes:
+      label: Intellectual property confirmation
+      description: >
+        Confirm that you have not copied verbatim text from restricted official
+        documents. If the official template is freely reproducible (e.g., CC-BY),
+        state so here.
+      placeholder: |
+        The ANR evaluation grid is published under [licence X] and may be reproduced.
+        I have paraphrased the criteria descriptions in my own words.
+        Official document linked above for exact wording.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission checklist
+      options:
+        - label: I have read docs/SCHEME_PACK_SPEC.md.
+          required: true
+        - label: I confirm that I am not copying verbatim text from documents whose licence prohibits reproduction.
+          required: true
+        - label: I am willing to maintain or co-maintain this scheme pack over time.
+          required: false
+        - label: I am prepared to submit a pull request with the pack files.
+          required: false

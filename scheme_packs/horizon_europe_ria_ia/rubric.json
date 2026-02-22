@@ -1,0 +1,387 @@
+{
+  "schema_version": "1.0",
+  "scheme_id": "horizon_europe_ria_ia",
+  "description": "Criterion-specific scoring descriptors (0–5) used by the GrantCraft Reviewer Report engine. Language is calibrated to mirror the vocabulary and expectations of Horizon Europe independent expert reviewers.",
+  "scoring_step": 0.5,
+  "score_labels": {
+    "0": "Not evaluable",
+    "1": "Poor",
+    "2": "Fair",
+    "3": "Good (passes threshold)",
+    "4": "Very Good",
+    "5": "Excellent"
+  },
+
+  "criteria": {
+    "excellence": {
+      "title": "Excellence",
+      "threshold": 3,
+      "descriptors": {
+        "0": {
+          "label": "Not evaluable",
+          "summary": "The proposal fails to address this criterion or cannot be assessed due to missing or fundamentally incomplete information.",
+          "full_description": "Part B text relevant to Excellence is missing, incoherent, or so incomplete that no meaningful assessment can be made. Objectives may not be stated; methodology may be absent; no engagement with the state of the art is visible.",
+          "typical_indicators": [
+            "Section 1 is absent or consists only of bullet points with no substance",
+            "Objectives are not articulated",
+            "Methodology is not described",
+            "No reference to scientific or technological context"
+          ],
+          "reviewer_language": [
+            "The proposal provides no discernible description of its scientific objectives.",
+            "No methodology is presented; the work plan cannot be assessed for scientific soundness.",
+            "The text fails to establish any scientific context for the work."
+          ]
+        },
+        "1": {
+          "label": "Poor",
+          "summary": "The criterion is inadequately addressed, with major weaknesses present in all or most aspects that are unlikely to be resolved through clarification.",
+          "full_description": "Objectives exist but are vague, unmeasurable, or obviously unachievable. The methodology is superficial, implausible, or missing key components. The SotA review is absent or consists of a generic narrative with no gap analysis. The proposal shows no meaningful ambition or novelty claim.",
+          "typical_indicators": [
+            "Objectives formulated as activities ('we will investigate X') with no measurable outcomes",
+            "Methodology described as a list of intended actions with no scientific justification",
+            "No TRL mentioned or stated TRL progression is implausible",
+            "SotA section reads as a generic introduction, not a critical review",
+            "No identification of specific knowledge or technology gaps",
+            "Ambition claim ('breakthrough', 'revolutionary') entirely unsupported",
+            "Alternative approaches not considered"
+          ],
+          "reviewer_language": [
+            "The stated objectives are formulated as activities rather than measurable outcomes, making it impossible to assess whether they will be achieved.",
+            "The proposed methodology lacks scientific rigour; the choice of approach is not justified.",
+            "The state-of-the-art review does not identify specific gaps addressed by the project.",
+            "The claimed novelty of the approach is asserted without evidence."
+          ]
+        },
+        "2": {
+          "label": "Fair",
+          "summary": "The criterion is broadly addressed but with serious weaknesses in most aspects. Significant revision would be required.",
+          "full_description": "Objectives are partially defined but lack specificity or measurability. The methodology has a plausible core but significant gaps in rigour, validation strategy, or treatment of risks. The SotA review names relevant work but does not critically identify gaps or clearly position the project's novel contribution. Ambition is present but weakly substantiated.",
+          "typical_indicators": [
+            "2–4 objectives stated but not SMART; some are outputs rather than outcomes",
+            "TRL mentioned but progression is not well-argued",
+            "Methodology describes the approach at high level without specifying methods, tools, or datasets",
+            "Validation strategy missing or vague ('results will be validated')",
+            "SotA identifies 1–2 prior works but does not build a case for the gap",
+            "Preliminary results mentioned but not described or cited",
+            "Some interdisciplinary elements mentioned but not integrated into methodology"
+          ],
+          "reviewer_language": [
+            "While objectives are present, several are insufficiently specific to allow assessment of achievement at project end.",
+            "The methodology would benefit from a clearer description of the specific methods and tools to be employed.",
+            "The SotA review identifies relevant work but does not adequately characterise the gap the project addresses.",
+            "Preliminary results are claimed but no supporting data or references are provided."
+          ]
+        },
+        "3": {
+          "label": "Good",
+          "summary": "The criterion is well addressed with only a small number of shortcomings that do not fundamentally undermine the proposal.",
+          "full_description": "Objectives are clear and mostly measurable, with a plausible rationale for their selection and linkage to the call topic. The methodology is sound and adequately described, with a credible validation strategy and some discussion of risks or alternatives. The SotA review identifies relevant gaps and positions the project's contribution. Ambition is adequately substantiated. The proposal passes the threshold.",
+          "typical_indicators": [
+            "3–5 clear objectives, most are measurable; minor ambiguity in 1–2",
+            "TRL progression stated and generally plausible",
+            "Methodology describes the main approach with reasonable justification; minor gaps in detail",
+            "Validation approach described with some success criteria",
+            "SotA identifies key prior work and explains 2–3 gaps addressed by the project",
+            "Preliminary results referenced with at least one citation or data point",
+            "Some treatment of alternative approaches or critical assumptions"
+          ],
+          "reviewer_language": [
+            "The objectives are clear and linked to the call topic, though one or two could be made more specific and measurable.",
+            "The methodology is sound and appropriate, with a reasonable description of the main approach; further detail on the validation strategy would strengthen the proposal.",
+            "The state-of-the-art review adequately positions the project, though a more thorough critical analysis of competing approaches would be beneficial.",
+            "The proposal demonstrates credible ambition with supporting evidence, though the novelty claim could be substantiated more fully."
+          ]
+        },
+        "4": {
+          "label": "Very Good",
+          "summary": "The criterion is very well addressed with only minor shortcomings that do not materially weaken the proposal.",
+          "full_description": "Objectives are specific, measurable, and ambitious, with clear linkage to call topic expected outcomes. The methodology is well-developed, rigorous, and appropriately justified, with a clear validation strategy, defined success metrics, and treatment of critical assumptions and alternatives. The SotA review is thorough and clearly positions the project's novel contribution with evidence. Ambition is convincingly substantiated, potentially with preliminary results.",
+          "typical_indicators": [
+            "4–6 SMART objectives clearly linked to call expected outcomes; TRL progression well-argued",
+            "Methodology is detailed, scientifically rigorous, and well-justified; alternatives considered",
+            "Validation strategy includes specific quantitative success criteria",
+            "SotA is thorough with key references; gaps clearly identified and mapped to project objectives",
+            "Preliminary/pilot results cited with data (even if limited) to support feasibility",
+            "Interdisciplinary approach meaningfully integrated, not just mentioned"
+          ],
+          "reviewer_language": [
+            "The objectives are specific, ambitious, and well-linked to the call's expected outcomes; the TRL progression is well-argued.",
+            "The methodology is rigorous and well-justified; alternative approaches are considered and the chosen approach is convincingly preferred.",
+            "The state-of-the-art review is thorough and clearly establishes the scientific/technological gaps addressed by the project.",
+            "Preliminary results provide credible evidence of feasibility, though further validation data would fully address reviewer concerns."
+          ]
+        },
+        "5": {
+          "label": "Excellent",
+          "summary": "The proposal successfully and convincingly addresses all relevant aspects of the criterion. Any shortcomings are minor and will not affect project success.",
+          "full_description": "Objectives are outstanding in their clarity, specificity, and ambition, with seamless linkage to call objectives. The methodology is exemplary in its rigour, creativity, and justification. The SotA review is comprehensive and persuasively establishes the need for and novelty of the proposed work. Ambition is fully substantiated. Preliminary results are compelling. The proposal reads as written by leaders in the field.",
+          "typical_indicators": [
+            "SMART objectives clearly tied to call KPIs; ambitious but demonstrably feasible TRL progression",
+            "Methodology is innovative and rigorous; critical path and decision points clearly articulated",
+            "Quantitative success criteria defined for each major research strand",
+            "SotA is expert-level: comprehensive, critical, and directly motivating all project objectives",
+            "Preliminary results are substantial and clearly support feasibility",
+            "Genuine interdisciplinary integration with clear mutual benefit",
+            "Alternative approaches treated in depth; selection of proposed approach fully convincing"
+          ],
+          "reviewer_language": [
+            "The proposal presents exceptionally well-defined, ambitious objectives that are tightly linked to the call's expected outcomes and fully supported by preliminary evidence.",
+            "The methodology is scientifically exemplary: rigorous, innovative, and convincingly justified over all alternatives.",
+            "The state-of-the-art review demonstrates deep expertise and provides a compelling scientific case for the proposed work.",
+            "Overall, the Excellence section is fully convincing and represents a proposal likely to advance the field significantly."
+          ]
+        }
+      }
+    },
+
+    "impact": {
+      "title": "Impact",
+      "threshold": 3,
+      "descriptors": {
+        "0": {
+          "label": "Not evaluable",
+          "summary": "The proposal fails to address this criterion or cannot be assessed due to missing or fundamentally incomplete information.",
+          "full_description": "Section 2 text is absent, incoherent, or so generic that no meaningful impact assessment can be made. No outcomes are described; no dissemination or exploitation plan is visible; no open science commitments are stated.",
+          "typical_indicators": [
+            "Section 2 is missing or is a single paragraph",
+            "No reference to call expected outcomes",
+            "No dissemination, exploitation, or open science content"
+          ],
+          "reviewer_language": [
+            "No impact section is provided; the proposal cannot be assessed against this criterion.",
+            "The text contains only generic statements about the importance of the research area with no project-specific impact content."
+          ]
+        },
+        "1": {
+          "label": "Poor",
+          "summary": "The criterion is inadequately addressed, with major weaknesses in all or most aspects.",
+          "full_description": "Expected outcomes are described generically without linkage to the call's specific expected outcomes. No credible pathway to impact is articulated. Dissemination plan is limited to 'publishing papers'. No open access or data management commitments. No exploitation strategy.",
+          "typical_indicators": [
+            "Outcomes section copies call text without explaining how the project achieves them",
+            "Dissemination plan: 'we will publish papers and attend conferences' with no specifics",
+            "No mention of open access, data management, or FAIR principles",
+            "No IP or exploitation strategy",
+            "No quantified impact indicators",
+            "Stakeholders named but no engagement strategy"
+          ],
+          "reviewer_language": [
+            "The expected outcomes are described only at a generic level; no credible mechanism for achieving the call's stated outcomes is articulated.",
+            "The dissemination plan is inadequate, lacking specific venues, target audiences, or timelines.",
+            "The proposal makes no commitment to open access or data management, contrary to HE requirements.",
+            "No exploitation strategy is presented."
+          ]
+        },
+        "2": {
+          "label": "Fair",
+          "summary": "The criterion is broadly addressed but with serious weaknesses in most aspects.",
+          "full_description": "Some outcomes are described with loose linkage to call objectives. A pathway to impact is sketched but lacks credibility or specificity. Dissemination lists some activities but without targeting or metrics. Open access is mentioned but data management is absent or superficial. Exploitation strategy is present but generic.",
+          "typical_indicators": [
+            "2–3 outcomes described but linkage to call expected outcomes is loose",
+            "Impact indicators present but not quantified",
+            "Dissemination: specific journals or conferences named but no audience analysis",
+            "Open access mentioned in passing; no DMP reference",
+            "Exploitation strategy: 'we will commercialise if results are positive'"
+          ],
+          "reviewer_language": [
+            "The expected outcomes are partially linked to the call's stated outcomes, but the connection is not fully developed.",
+            "The pathway to impact is present but lacks specificity regarding who will exploit results and on what timeline.",
+            "The dissemination plan identifies relevant venues but does not target specific audiences or define communication activities for non-academic groups.",
+            "Open science commitments are insufficient; a Data Management Plan is not referenced."
+          ]
+        },
+        "3": {
+          "label": "Good",
+          "summary": "The criterion is well addressed with only a small number of shortcomings.",
+          "full_description": "Expected outcomes are clearly linked to call expected outcomes with project-specific elaboration. A credible pathway to impact is described with a timeline. Dissemination plan covers academic and non-academic channels. Open access commitment is stated; DMP is referenced. Exploitation strategy identifies who exploits what. Passes the threshold.",
+          "typical_indicators": [
+            "Outcomes map explicitly to call expected outcomes; 3–5 with some quantification",
+            "Short/medium/long-term impact narrative present",
+            "Named exploiting partners and routes for key results",
+            "Specific journals/conferences named; communication activities described",
+            "Open access commitment stated; DMP deliverable referenced (Month 6)",
+            "IP strategy mentioned; ownership rules defined at high level"
+          ],
+          "reviewer_language": [
+            "The expected outcomes are clearly articulated and credibly linked to the call's stated outcomes, with some quantification of expected impacts.",
+            "The pathway to impact is described with a reasonable timeline and identification of exploiting parties, though further specificity on the route to market/policy would strengthen the case.",
+            "The dissemination plan covers appropriate channels; the open access commitment and DMP reference meet minimum HE requirements.",
+            "The exploitation strategy is present and identifies key results and responsible partners, though it would benefit from more detail on IP protection mechanisms."
+          ]
+        },
+        "4": {
+          "label": "Very Good",
+          "summary": "The criterion is very well addressed with only minor shortcomings.",
+          "full_description": "Outcomes are comprehensively mapped to call expected outcomes with quantified KPIs. Pathway to impact is detailed, credible, and differentiated by stakeholder group. Dissemination plan is targeted and multi-channel. Open access and FAIR data commitments are concrete; specific repository named; DMP in scope. Exploitation strategy is detailed with IP plan, exploitation roadmap, and market analysis (where relevant).",
+          "typical_indicators": [
+            "Explicit quote or paraphrase of call expected outcomes; each addressed specifically",
+            "Quantified impact KPIs with baselines and targets",
+            "Named journal list; conference attendance schedule; targeted press/outreach activities",
+            "Named data repository; FAIR principles addressed; DMP deliverable confirmed",
+            "IP ownership table or description; licensing strategy; exploitation roadmap",
+            "Market size estimate (for IA); identified early adopters or lead customers"
+          ],
+          "reviewer_language": [
+            "The expected outcomes are comprehensively addressed and mapped to the call's stated outcomes with quantified indicators.",
+            "The pathway to impact is credible and detailed, with a differentiated strategy for scientific, commercial, and policy-relevant results.",
+            "The open science commitments are strong: a specific repository is named, FAIR principles are addressed, and the DMP is appropriately scoped.",
+            "The exploitation strategy is well-developed with a credible IP plan and identified routes to market/deployment, though the market analysis could be deepened."
+          ]
+        },
+        "5": {
+          "label": "Excellent",
+          "summary": "The proposal successfully and convincingly addresses all relevant aspects of the criterion.",
+          "full_description": "Outcomes are outstanding: fully mapped to call expected outcomes with ambitious but credible quantified targets. Pathway to impact is compelling, with specific mechanisms, a clear exploitation roadmap, and identified partners/customers/policy channels. Open science is exemplary with full FAIR data plan, named repository, open source software commitment, and creative citizen science or public engagement. Exploitation strategy is detailed, IP-secured, and credibly near-term (for IA) or strategically long-term (for RIA).",
+          "typical_indicators": [
+            "Impact section reads as a comprehensive impact case study",
+            "KPIs are ambitious, quantified, and time-bound",
+            "Exploitation roadmap with milestones, responsible parties, and financial projections",
+            "Open science goes beyond minimum: pre-registration, open materials, EOSC integration",
+            "Communication plan includes specific events, media, and multi-lingual outreach where relevant",
+            "Letters of intent from exploiting industry/policy partners (referenced or in annex)"
+          ],
+          "reviewer_language": [
+            "The impact section is outstanding: outcomes are fully mapped to call expected outcomes with ambitious, credible, and quantified targets.",
+            "The pathway to impact is compelling and highly credible, with specific exploitation mechanisms, named partners, and a realistic roadmap.",
+            "The open science plan is exemplary and goes beyond minimum requirements, demonstrating a genuine commitment to openness and reproducibility.",
+            "Overall, the Impact section is fully convincing and provides a strong case for the transformative potential of the project."
+          ]
+        }
+      }
+    },
+
+    "implementation": {
+      "title": "Implementation",
+      "threshold": 3,
+      "descriptors": {
+        "0": {
+          "label": "Not evaluable",
+          "summary": "The proposal fails to address this criterion or cannot be assessed due to missing or fundamentally incomplete information.",
+          "full_description": "Section 3 is absent or so incomplete that the work plan, management structure, consortium, and resources cannot be assessed.",
+          "typical_indicators": [
+            "Section 3 missing or present only as a placeholder",
+            "No WP structure described",
+            "No budget or resource information provided"
+          ],
+          "reviewer_language": [
+            "No implementation section is provided; this criterion cannot be assessed.",
+            "The proposal contains no work plan; it is not possible to evaluate the feasibility or coherence of the proposed activities."
+          ]
+        },
+        "1": {
+          "label": "Poor",
+          "summary": "The criterion is inadequately addressed, with major weaknesses in all or most aspects.",
+          "full_description": "The work plan is incoherent, unrealistic, or missing key WPs. Milestones are not verifiable. Deliverables are not defined. No Gantt chart or timeline is present. Management structure is absent or does not function for the project type. Consortium lacks essential capabilities or has too many partners with overlapping roles. Budget is unjustified or obviously wrong.",
+          "typical_indicators": [
+            "Work packages are not defined; activities listed without structure",
+            "No milestones; deliverables are just reports with no technical content",
+            "No Gantt chart or timeline",
+            "No risk register",
+            "Management section absent or describes only the coordinator role",
+            "Consortium roles overlap substantially; partners cannot be differentiated",
+            "Budget table missing or totals do not match Part A"
+          ],
+          "reviewer_language": [
+            "The work plan lacks coherence; activities are not organised into meaningful work packages and no milestone structure is provided.",
+            "No risk register is presented; the project appears to have no structured approach to risk management.",
+            "The consortium section does not demonstrate that partners bring complementary and non-overlapping capabilities.",
+            "The budget is not justified and does not appear proportionate to the stated activities."
+          ]
+        },
+        "2": {
+          "label": "Fair",
+          "summary": "The criterion is broadly addressed but with serious weaknesses in most aspects.",
+          "full_description": "A work package structure is present but WPs are not internally coherent or the timeline is unrealistic. Milestones exist but are not verifiable. A partial Gantt is provided. Some management structure is described but lacks key governance elements. Consortium has plausible composition but roles are not well-differentiated. Budget exists but key items are unjustified.",
+          "typical_indicators": [
+            "3–5 WPs present but tasks not described under each WP",
+            "Milestones defined as 'end of WP' or internal meetings",
+            "Gantt chart included but does not show dependencies or critical path",
+            "Risk register has 2–3 risks; mitigation measures are generic",
+            "Management: coordinator role described but no SC or governance body",
+            "Consortium: partner profiles present but roles not clearly differentiated",
+            "Budget: top-level numbers present but no justification narrative"
+          ],
+          "reviewer_language": [
+            "A work package structure is provided but the individual WPs lack sufficient task-level detail to assess feasibility.",
+            "The milestones are not sufficiently specific to serve as verifiable progress checkpoints.",
+            "The risk register lists some risks but the proposed mitigation measures are generic and do not address the specific project context.",
+            "The consortium section lists partner profiles but does not adequately demonstrate complementarity or the absence of overlap."
+          ]
+        },
+        "3": {
+          "label": "Good",
+          "summary": "The criterion is well addressed with only a small number of shortcomings.",
+          "full_description": "Coherent work package structure with task-level descriptions. Milestones are mostly verifiable. Deliverables are defined and scheduled. A Gantt chart is present. Risk register covers main risks. Management structure is adequate with defined roles. Consortium is complementary at a high level. Budget is broadly justified. Passes the threshold.",
+          "typical_indicators": [
+            "4–6 WPs with task descriptions; WP summary table present",
+            "Milestones are verifiable achievements; 1–2 may still be defined as report submissions",
+            "D1.1 DMP scheduled at Month 6",
+            "Gantt chart shows WPs and key milestones; dependencies partially shown",
+            "Risk register has 4–6 risks with likelihood/impact ratings and specific mitigation",
+            "Governance: SC and WP leaders defined; meeting cadence described",
+            "Consortium: complementarity described; each partner has a distinct role",
+            "Budget: personnel and main cost categories justified; some items underdeveloped"
+          ],
+          "reviewer_language": [
+            "The work plan is coherent and internally consistent, with a clear WP structure and defined milestones and deliverables; minor improvements in task-level detail would strengthen the proposal.",
+            "The risk register covers the main project risks with appropriate mitigation measures, though a more comprehensive treatment of technical risks would be beneficial.",
+            "The consortium composition is appropriate and complementary, with each partner contributing distinct expertise.",
+            "The budget is broadly justified and proportionate to the proposed activities, though person-month allocations for some tasks could be elaborated."
+          ]
+        },
+        "4": {
+          "label": "Very Good",
+          "summary": "The criterion is very well addressed with only minor shortcomings.",
+          "full_description": "Well-structured, coherent work plan with detailed WP descriptions, verifiable milestones, concrete deliverables, and a clear Gantt chart showing critical path and dependencies. Comprehensive risk register with specific mitigation. Solid governance structure with clear decision-making and conflict resolution procedures. Strong, complementary consortium with well-differentiated roles and justified size. Detailed budget justification.",
+          "typical_indicators": [
+            "WPs include objectives, tasks (T#.#), responsible partners, and person-month totals",
+            "All milestones are verifiable external achievements with clear evidence of completion",
+            "D1.1 DMP explicitly scheduled; integration milestone between technical WPs visible",
+            "Gantt shows critical path and key dependencies clearly",
+            "Risk register has 6–8 risks across technical, financial, and consortium categories; mitigation is specific",
+            "Governance: full structure with SC, WPLs, advisory board (if relevant), and meeting schedule",
+            "Consortium: complementarity matrix or table; gender balance addressed",
+            "Budget: per-partner breakdown with person-month and cost justification; value-for-money statement"
+          ],
+          "reviewer_language": [
+            "The work plan is well-structured and detailed, with coherent WPs, verifiable milestones, and a clear Gantt chart that shows the critical path.",
+            "The risk management approach is comprehensive, covering technical, financial, and consortium risks with specific and credible mitigation measures.",
+            "The consortium is well-composed with clearly differentiated, complementary roles; gender balance is appropriately addressed.",
+            "The budget is detailed and well-justified, with person-months linked to specific tasks and major cost items individually explained."
+          ]
+        },
+        "5": {
+          "label": "Excellent",
+          "summary": "The proposal successfully and convincingly addresses all relevant aspects of the criterion.",
+          "full_description": "Exemplary work plan that is internally consistent, optimally structured, and clearly linked to the scientific objectives. All milestones are meaningful and verifiable. Budget is lean, fully justified, and demonstrably value-for-money. Risk register is comprehensive and demonstrates mature project management thinking. Governance structure is efficient and appropriate for the project scale. Consortium is ideal in size and composition; gender balance is a project strength.",
+          "typical_indicators": [
+            "WP descriptions are so precise that any expert could execute them from the text alone",
+            "Critical path is clearly visible; contingency plans for critical-path delays are mentioned",
+            "Risk register uses quantitative likelihood/impact where possible; includes external risks",
+            "Governance includes external advisory board with named experts",
+            "Consortium: each partner's unique contribution is individually justified and non-substitutable",
+            "Budget: fully justified line by line; no apparent padding; subcontracting < 20%; value-for-money explicitly argued",
+            "Evidence of prior consortium collaboration (joint publications, prior projects referenced)"
+          ],
+          "reviewer_language": [
+            "The work plan is exemplary: internally consistent, optimally structured, and directly linked to the project's scientific objectives at a level of detail that fully convinces of feasibility.",
+            "The risk management approach is mature and comprehensive, covering all foreseeable risks with specific, proportionate mitigation and contingency measures.",
+            "The consortium is ideally composed: each partner brings unique, non-substitutable expertise, roles are perfectly differentiated, and prior collaboration provides additional confidence.",
+            "The budget is lean, fully justified, and demonstrably value-for-money. Overall, the Implementation section is fully convincing."
+          ]
+        }
+      }
+    }
+  },
+
+  "half_score_guidance": {
+    "description": "Reviewers may award half-point scores (e.g., 3.5, 4.5) when a proposal clearly sits between two full-score levels.",
+    "examples": [
+      "Score 3.5 (Excellence): Objectives and SotA are at Good level; methodology is at Very Good level — average sits between 3 and 4.",
+      "Score 2.5 (Impact): Outcomes are Fair but dissemination is Good — proposal broadly below threshold but better than most Poor proposals.",
+      "Score 4.5 (Implementation): Work plan and consortium are Excellent; management section has one minor but persistent gap preventing full 5."
+    ]
+  },
+
+  "threshold_note": "A proposal scoring exactly 3.0 on a criterion PASSES that threshold. Scores of 0, 1, or 2 on any criterion result in rejection regardless of the overall total. Overall scores of ≥10/15 with all thresholds met proceed to ranking."
+}

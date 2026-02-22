@@ -1,0 +1,777 @@
+{
+  "$schema": "../_schema/pack.schema.json",
+  "id": "horizon_europe_ria_ia",
+  "name": "Horizon Europe — Research and Innovation Action (RIA) / Innovation Action (IA)",
+  "short_name": "HE RIA/IA",
+  "version": "1.0.0",
+  "spec_version": "1",
+  "description": "Standard proposal structure and evaluation criteria for Horizon Europe Research and Innovation Actions (RIA) and Innovation Actions (IA), based on the Horizon Europe Programme Guide and the Standard Evaluation Form used by independent expert reviewers.",
+
+  "metadata": {
+    "funding_body": "European Commission (EC)",
+    "programme": "Horizon Europe (2021–2027)",
+    "action_types": ["RIA", "IA"],
+    "funding_rate": {
+      "RIA": "100% of eligible costs for all entity types",
+      "IA": "70% of eligible costs for profit-making entities; 100% for non-profit entities"
+    },
+    "source_documents": [
+      "Horizon Europe Programme Guide v3.0 (April 2023)",
+      "HE Standard Application Form (RIA/IA), Part B template",
+      "HE General Model Grant Agreement (MGA)",
+      "HE Open Science requirements (Article 14 MGA)",
+      "HE Ethics Review Procedures"
+    ],
+    "last_updated": "2024-09-01",
+    "contributor": "GrantCraft Contributors",
+    "notes": "Page limits and exact sub-section requirements vary by call topic and cluster. Always cross-check this pack against the specific Call for Proposals (CfP) text and the Work Programme annex before submission."
+  },
+
+  "page_limits": {
+    "default_total": 45,
+    "unit": "A4 pages",
+    "font_requirements": "Times New Roman 11pt or Arial/Helvetica/Calibri 10pt",
+    "line_spacing": "single",
+    "margins_minimum_mm": 15,
+    "call_specific_note": "Some calls deviate significantly: ERC Starting/Consolidator Grants use different forms; large Partnerships may allow 70 pages; fast-track/Pathfinder calls may restrict to 20–30 pages. Always read Section 5 of the specific topic text.",
+    "per_section_guidance": {
+      "excellence": "~15 pages (recommended)",
+      "impact": "~15 pages (recommended)",
+      "implementation": "~15 pages (recommended)"
+    },
+    "pages_NOT_counted": [
+      "Cover page (Part A data)",
+      "Table of contents",
+      "List of references / bibliography",
+      "CVs of key personnel (Annex)",
+      "Letters of commitment (Annex)",
+      "Activity reports of partners (Annex)"
+    ]
+  },
+
+  "scoring_rules": {
+    "threshold_per_criterion": 3.0,
+    "overall_threshold": 10.0,
+    "max_score_per_criterion": 5,
+    "total_max_score": 15,
+    "scoring_step": 0.5,
+    "weights": {
+      "excellence": 0.333,
+      "impact": 0.333,
+      "implementation": 0.334
+    },
+    "rejection_rule": "A proposal failing ANY single criterion threshold (score < 3.0) is rejected, regardless of total score.",
+    "ranking_note": "When scores are equal, priority order is: (1) Impact score, (2) Excellence score, (3) Implementation score."
+  },
+
+  "evaluation_criteria": [
+    {
+      "id": "excellence",
+      "title": "Excellence",
+      "weight": 0.333,
+      "threshold": 3.0,
+      "max_score": 5,
+      "description": "The scientific/technological quality, ambition, and credibility of the proposed approach. Reviewers assess whether the proposal articulates clear, ambitious objectives and demonstrates a rigorous, feasible methodology that goes substantially beyond the current state of the art.",
+      "differentiated_by_action_type": {
+        "RIA": "Greater emphasis on scientific novelty, fundamental research approach, and academic excellence.",
+        "IA": "Greater emphasis on innovation readiness (higher TRL target), viability of the innovation pathway, and proximity to market or deployment."
+      },
+      "sub_criteria": [
+        {
+          "id": "objectives_ambition",
+          "title": "Objectives and Ambition",
+          "description": "Clarity, measurability, and ambition of the project objectives. Does the project push boundaries?"
+        },
+        {
+          "id": "methodology",
+          "title": "Soundness of Methodology",
+          "description": "Appropriateness, credibility, and rigour of the methodology; treatment of risks and alternatives; interdisciplinary aspects."
+        },
+        {
+          "id": "sota",
+          "title": "Beyond the State of the Art",
+          "description": "Quality of the SotA analysis; clarity of the gap being addressed; evidence that the proposal advances the field substantially."
+        }
+      ],
+      "what_reviewers_look_for": [
+        "Specific, measurable, achievable, relevant, time-bound (SMART) objectives",
+        "Explicit ambition statement — why is this challenge significant at the European or global level?",
+        "Clear positioning vs. current state of the art with identified knowledge/technology gaps",
+        "Soundness and originality of the proposed methodology and research design",
+        "Justification for why the chosen approach is optimal among alternatives",
+        "Quantified success criteria and validation approach",
+        "Identification of critical assumptions and how they will be tested",
+        "Interdisciplinary, multi-actor, or co-design elements where relevant to the topic",
+        "Preliminary/proof-of-concept results that demonstrate feasibility",
+        "Current TRL and realistic target TRL at project end"
+      ],
+      "common_pitfalls": [
+        "Objectives stated as activities ('We will develop X') rather than outcomes ('We will demonstrate X achieving Y performance')",
+        "Methodology presented as a list of tasks without scientific justification",
+        "SotA section that reads as a literature review without identifying gaps or positioning the proposal",
+        "Ambition claims (e.g., 'breakthrough') unsupported by evidence or specifics",
+        "No mention of TRL, or unrealistic TRL progression",
+        "Alternative approaches not considered or dismissed without rationale",
+        "Feasibility risks not acknowledged or addressed",
+        "Preliminary results claimed without data or references"
+      ]
+    },
+    {
+      "id": "impact",
+      "title": "Impact",
+      "weight": 0.333,
+      "threshold": 3.0,
+      "max_score": 5,
+      "description": "The extent to which project outputs will contribute to the expected outcomes stated in the call topic, and to wider scientific, economic, and societal impacts. Reviewers assess the credibility of the pathway to impact and the adequacy of open science, dissemination, and exploitation plans.",
+      "differentiated_by_action_type": {
+        "RIA": "Impacts can be longer-term; scientific and technological impacts are primary. Market potential is secondary.",
+        "IA": "Closer-to-market impacts expected. Commercialisation or deployment pathways must be credible and near-term. TRL uplift to ≥6 is typically expected."
+      },
+      "sub_criteria": [
+        {
+          "id": "expected_outcomes",
+          "title": "Expected Outcomes and Impacts",
+          "description": "Alignment with call expected outcomes; scientific, economic, and societal impacts; beneficiaries."
+        },
+        {
+          "id": "pathway_to_impact",
+          "title": "Pathway to Impact",
+          "description": "Strategy to maximise impact; exploitation plan; IP; market/policy uptake routes."
+        },
+        {
+          "id": "dissemination_exploitation",
+          "title": "Dissemination, Exploitation and Open Science",
+          "description": "Plans for sharing results; open access; FAIR data; communication to target audiences."
+        }
+      ],
+      "what_reviewers_look_for": [
+        "Explicit mapping of project outcomes to the call topic's 'Expected Outcomes' bullet points",
+        "Quantified impact indicators (e.g., cost reduction %, number of users, publications in journals with IF > X)",
+        "Credible short-, medium-, and long-term impact timeline",
+        "Identified target beneficiaries/end-users and how they will access/adopt results",
+        "Concrete exploitation strategy: who exploits what, how, and when",
+        "IP ownership and licensing plan (especially for multi-partner consortia)",
+        "Market sizing and entry strategy (required for IA, good practice for RIA)",
+        "Open access plan for publications (mandatory in HE)",
+        "Data Management Plan commitment (DMP due Month 6)",
+        "FAIR data principles application",
+        "Engagement of non-academic stakeholders in impact creation",
+        "Dissemination activities beyond academic publications (policy briefs, press, demos)"
+      ],
+      "common_pitfalls": [
+        "Outcomes section that copies call text without explaining how the project achieves them",
+        "Vague impact language: 'our results will benefit society' without specifics",
+        "Dissemination plan limited to 'publish papers and attend conferences'",
+        "No mention of open access or data management",
+        "Exploitation plan missing or generic ('we will commercialise if results are good')",
+        "IP strategy absent for projects with commercial potential",
+        "No quantified impact indicators or KPIs",
+        "Ignoring the mandatory HE open science requirements",
+        "Stakeholders listed but no engagement plan described"
+      ]
+    },
+    {
+      "id": "implementation",
+      "title": "Implementation",
+      "weight": 0.334,
+      "threshold": 3.0,
+      "max_score": 5,
+      "description": "The coherence and effectiveness of the work plan, the appropriateness of management structures, the quality and complementarity of the consortium, and the justification of the requested resources.",
+      "differentiated_by_action_type": {
+        "RIA": "Flexibility in methodology and work plan is acceptable given research uncertainty. Consortium may include more academic partners.",
+        "IA": "Work plan should reflect a more deterministic, engineering approach. Industry partners and end-users should feature prominently."
+      },
+      "sub_criteria": [
+        {
+          "id": "work_plan",
+          "title": "Work Plan and Work Packages",
+          "description": "Internal coherence of WPs; specificity of milestones and deliverables; realistic timeline; critical path."
+        },
+        {
+          "id": "management",
+          "title": "Management Structure and Procedures",
+          "description": "Coordination effectiveness; decision-making; risk management; quality assurance."
+        },
+        {
+          "id": "consortium",
+          "title": "Consortium as a Whole",
+          "description": "Complementarity, capacity, and fit of partners; appropriate size; gender balance in leadership."
+        },
+        {
+          "id": "resources",
+          "title": "Resources and Budget",
+          "description": "Proportionality of requested budget; justification of person-months, equipment, and subcontracting."
+        }
+      ],
+      "what_reviewers_look_for": [
+        "Clear, logical work package structure with no overlaps or gaps",
+        "WP summary table (WP ID, title, lead, start/end months, total person-months)",
+        "Specific, verifiable milestones (not 'start of WP2' but 'prototype demonstrating X at TRL 4')",
+        "Deliverables that are concrete outputs (D2.1: Software release v1.0, D3.2: Pilot report)",
+        "Gantt chart showing timeline, critical path, and interdependencies",
+        "D1.1: Data Management Plan due by Month 6 (mandatory HE deliverable)",
+        "Governance structure diagram with clear roles (Coordinator, SC, WPLs, AB)",
+        "Risk register with likelihood/impact ratings and mitigation measures (top 5–8 risks)",
+        "Partners that each bring unique, essential capabilities not duplicated elsewhere",
+        "Appropriate consortium size (avoid partners that do not add value)",
+        "Budget breakdown per partner and per cost category",
+        "Person-month justification linked to specific tasks in WPs",
+        "Equipment costs justified and not available via other means",
+        "Subcontracting limited and justified where used"
+      ],
+      "common_pitfalls": [
+        "Work packages that are disconnected or have no integration tasks",
+        "Milestones defined as internal meetings rather than verifiable achievements",
+        "Deliverables that are just interim reports with no concrete technical content",
+        "No Gantt chart or timeline",
+        "Risk register absent, or listing only minor risks and ignoring critical ones",
+        "WP1 (Management) consuming excessive budget (> 5–8% is a red flag)",
+        "Partners with overlapping roles and no clear division of labour",
+        "Consortium too large relative to budget (dilutes per-partner contribution)",
+        "Missing justification for equipment costs > €50k per item",
+        "Budget appears copy-pasted with no link to tasks",
+        "Person-months not linked to specific deliverables or tasks",
+        "Gender balance issues: all named PIs/WP leaders are the same gender"
+      ]
+    }
+  ],
+
+  "required_sections": [
+    {
+      "id": "excellence",
+      "title": "1. Excellence",
+      "order": 1,
+      "required": true,
+      "page_budget_guidance": "~15 pages",
+      "description": "Demonstrate the scientific/technological quality, originality, and feasibility of your project.",
+      "subsections": [
+        {
+          "id": "objectives_ambition",
+          "title": "1.1 Objectives and Ambition",
+          "order": 1,
+          "required": true,
+          "criterion": "excellence",
+          "word_count_guidance": { "min": 400, "recommended": 700, "max": 1000 },
+          "key_questions": [
+            "What is the specific, ambitious challenge this project addresses?",
+            "What are your numbered, measurable project objectives?",
+            "How does this go significantly beyond the current state of the art?",
+            "What is the current TRL and what TRL will be achieved by project end?",
+            "Why is this the right time to pursue this challenge?"
+          ],
+          "must_include": [
+            "Numbered list of 3–6 specific, measurable objectives",
+            "Statement of ambition (why is this challenge important and timely?)",
+            "Current TRL (or readiness level) and target TRL at project end",
+            "Explicit link to the call topic title and expected outcomes",
+            "Indication of what 'beyond state of the art' means in concrete terms"
+          ],
+          "keywords_to_cover": [
+            "objective", "goal", "ambition", "novel", "innovative", "beyond state of the art",
+            "TRL", "breakthrough", "challenge", "measurable", "specific"
+          ]
+        },
+        {
+          "id": "methodology",
+          "title": "1.2 Methodology",
+          "order": 2,
+          "required": true,
+          "criterion": "excellence",
+          "word_count_guidance": { "min": 600, "recommended": 1000, "max": 1500 },
+          "key_questions": [
+            "What is the overall scientific/technical approach and why is it the best?",
+            "What specific methods, tools, models, or datasets will you use?",
+            "How will you validate and measure success?",
+            "What are the critical assumptions, and how will you test them?",
+            "What alternative approaches were considered and why were they rejected?",
+            "How does the methodology integrate multiple disciplines or stakeholders?"
+          ],
+          "must_include": [
+            "Overall approach narrative (concept diagram recommended)",
+            "Specific methods for each major research/development strand",
+            "Validation and evaluation strategy with success metrics",
+            "Discussion of critical assumptions and risk mitigation in methodology",
+            "Consideration of at least one alternative approach",
+            "Interdisciplinary or co-design elements (where relevant)"
+          ],
+          "keywords_to_cover": [
+            "methodology", "approach", "method", "validation", "evaluation", "model",
+            "interdisciplinary", "assumption", "alternative", "feasibility", "rigorous"
+          ]
+        },
+        {
+          "id": "state_of_art",
+          "title": "1.3 Beyond the State of the Art",
+          "order": 3,
+          "required": true,
+          "criterion": "excellence",
+          "word_count_guidance": { "min": 300, "recommended": 500, "max": 800 },
+          "key_questions": [
+            "What is the current frontier of knowledge/technology in this area?",
+            "What are the key limitations or gaps in existing approaches?",
+            "How does your proposal address these gaps in a substantially new way?",
+            "What preliminary/pilot work supports feasibility?"
+          ],
+          "must_include": [
+            "Concise SotA summary referencing key works (with in-text citations)",
+            "Explicit identification of 2–4 critical gaps or limitations",
+            "Clear statement of how the project addresses each gap",
+            "Preliminary/pilot results or proof-of-concept (if available)"
+          ],
+          "keywords_to_cover": [
+            "state of the art", "gap", "limitation", "prior work", "advance", "novel contribution",
+            "preliminary", "proof of concept", "literature", "reference"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "impact",
+      "title": "2. Impact",
+      "order": 2,
+      "required": true,
+      "page_budget_guidance": "~15 pages",
+      "description": "Demonstrate the value and significance of the expected outcomes, the credibility of the pathway to impact, and your open science and dissemination plans.",
+      "subsections": [
+        {
+          "id": "expected_outcomes",
+          "title": "2.1 Expected Outcomes and Impacts",
+          "order": 1,
+          "required": true,
+          "criterion": "impact",
+          "word_count_guidance": { "min": 500, "recommended": 800, "max": 1200 },
+          "key_questions": [
+            "Which specific 'Expected Outcomes' from the call topic does this project address, and how?",
+            "What are the scientific, technological, economic, and societal impacts?",
+            "Who are the direct and indirect beneficiaries, and how do they benefit?",
+            "What quantitative impact indicators will you track?",
+            "How does the project contribute to EU priorities (Green Deal, Digital, Health, etc.)?"
+          ],
+          "must_include": [
+            "Direct mapping to call topic's listed 'Expected Outcomes' (quote them if short)",
+            "Scientific impacts (new knowledge, publications, open data, standards)",
+            "Technological impacts (prototypes, IP, spin-offs, industry adoption)",
+            "Economic impacts (market potential, jobs, cost savings) with realistic figures",
+            "Societal impacts (citizens, policy, environment, SDGs)",
+            "Quantified impact indicators/KPIs with baseline and target values",
+            "Named beneficiary groups and how they access results"
+          ],
+          "keywords_to_cover": [
+            "outcome", "impact", "benefit", "beneficiary", "stakeholder", "scientific",
+            "economic", "societal", "indicator", "KPI", "European", "policy", "SDG"
+          ]
+        },
+        {
+          "id": "pathway_to_impact",
+          "title": "2.2 Pathway to Impact",
+          "order": 2,
+          "required": true,
+          "criterion": "impact",
+          "word_count_guidance": { "min": 300, "recommended": 500, "max": 800 },
+          "key_questions": [
+            "What is the specific route through which results will reach end-users or markets?",
+            "Who will exploit which results, and on what timeline?",
+            "How will IP be owned, protected, and licensed?",
+            "What partnerships, standards bodies, or policy processes will facilitate uptake?"
+          ],
+          "must_include": [
+            "Short-term (end of project), medium-term (3–5 years), long-term (10 years) impact narrative",
+            "Named exploiting parties for each key result",
+            "IP strategy: ownership, protection mechanisms (patents, trade secrets, licences)",
+            "Market entry or deployment pathway (especially for IA)",
+            "Stakeholder engagement activities during and after the project"
+          ],
+          "keywords_to_cover": [
+            "pathway", "exploitation", "uptake", "market", "IP", "patent", "license",
+            "commercialisation", "deployment", "stakeholder", "policy", "standard"
+          ]
+        },
+        {
+          "id": "dissemination",
+          "title": "2.3 Communication, Dissemination and Exploitation Plan",
+          "order": 3,
+          "required": true,
+          "criterion": "impact",
+          "word_count_guidance": { "min": 300, "recommended": 500, "max": 700 },
+          "key_questions": [
+            "What publications, datasets, and software will be released openly?",
+            "Which conferences and venues are targeted?",
+            "What are your communication activities for non-specialist audiences?",
+            "How will you ensure open access compliance?"
+          ],
+          "must_include": [
+            "List of target journals, conferences, and workshops",
+            "Open access commitment for all peer-reviewed publications (mandatory in HE)",
+            "Communication plan: website, social media, press releases, demos",
+            "Targeted media/audiences for each activity",
+            "Note on D1.1 Communication and Dissemination Plan (due Month 3)"
+          ],
+          "keywords_to_cover": [
+            "publication", "dissemination", "open access", "communication", "conference",
+            "website", "social media", "press", "outreach", "exploitation plan"
+          ]
+        },
+        {
+          "id": "open_science",
+          "title": "2.4 Open Science Practices",
+          "order": 4,
+          "required": true,
+          "criterion": "impact",
+          "word_count_guidance": { "min": 150, "recommended": 250, "max": 400 },
+          "key_questions": [
+            "Will research data be made openly available under FAIR principles?",
+            "What trusted repository will be used for data deposition?",
+            "Will software/code be released as open source? Under which licence?",
+            "Are there any legitimate reasons to restrict openness (IP, security, privacy, ethics)?"
+          ],
+          "must_include": [
+            "Commitment to FAIR data principles (Findable, Accessible, Interoperable, Reusable)",
+            "Named data repository (Zenodo, EU Open Research Repository, domain-specific)",
+            "Open source software release plan (or justification for not doing so)",
+            "Reference to Data Management Plan (DMP) deliverable (D1.1, due Month 6)",
+            "Any justified deviations from full openness with rationale"
+          ],
+          "keywords_to_cover": [
+            "open science", "FAIR", "open access", "data management", "repository",
+            "open source", "data", "DMP", "findable", "accessible", "interoperable", "reusable"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "implementation",
+      "title": "3. Implementation",
+      "order": 3,
+      "required": true,
+      "page_budget_guidance": "~15 pages",
+      "description": "Demonstrate a coherent, realistic work plan, effective management structures, an appropriate consortium, and a justified budget.",
+      "subsections": [
+        {
+          "id": "work_plan",
+          "title": "3.1 Work Plan and Work Packages",
+          "order": 1,
+          "required": true,
+          "criterion": "implementation",
+          "word_count_guidance": { "min": 700, "recommended": 1200, "max": 2000 },
+          "key_questions": [
+            "How are activities structured into coherent work packages?",
+            "Are milestones specific, verifiable, and meaningful?",
+            "Are deliverables concrete and scheduled appropriately?",
+            "Does the Gantt chart show a critical path and logical sequencing?"
+          ],
+          "must_include": [
+            "WP summary table: WP#, Title, Lead Partner, Start Month, End Month, Total Person-Months",
+            "Individual WP descriptions: objectives, tasks (T#.#), milestones (MS#), deliverables (D#.#)",
+            "Gantt chart or equivalent timeline showing all WPs, milestones, and key deliverables",
+            "D1.1: Data Management Plan (Month 6) — mandatory HE deliverable",
+            "At least one integration WP connecting technical WPs",
+            "Critical path and key dependencies indicated"
+          ],
+          "keywords_to_cover": [
+            "work package", "WP", "task", "milestone", "deliverable", "Gantt", "timeline",
+            "critical path", "person-month", "month", "schedule", "dependency"
+          ]
+        },
+        {
+          "id": "management",
+          "title": "3.2 Management Structure and Procedures",
+          "order": 2,
+          "required": true,
+          "criterion": "implementation",
+          "word_count_guidance": { "min": 300, "recommended": 500, "max": 700 },
+          "key_questions": [
+            "Who is the Project Coordinator and what is their role?",
+            "How are strategic and operational decisions made?",
+            "How are conflicts between partners resolved?",
+            "How is quality assured throughout the project?",
+            "What are the top risks and how are they mitigated?"
+          ],
+          "must_include": [
+            "Governance chart: Coordinator, Steering Committee (SC), Scientific/Technical Board, WP Leaders",
+            "Decision-making procedures and quorum rules",
+            "Conflict resolution and escalation procedure",
+            "Internal reporting schedule (quarterly reports, annual reviews)",
+            "Risk register: top 5–8 risks with Likelihood (H/M/L), Impact (H/M/L), Mitigation, Owner",
+            "Quality Assurance plan (internal reviews, peer review of deliverables)"
+          ],
+          "keywords_to_cover": [
+            "management", "coordinator", "governance", "steering", "decision", "risk",
+            "mitigation", "quality", "reporting", "committee", "conflict", "escalation"
+          ]
+        },
+        {
+          "id": "consortium",
+          "title": "3.3 Consortium as a Whole",
+          "order": 3,
+          "required": true,
+          "criterion": "implementation",
+          "word_count_guidance": { "min": 300, "recommended": 500, "max": 700 },
+          "key_questions": [
+            "What unique, essential capability does each partner bring?",
+            "Is the consortium the minimum effective size?",
+            "Are third-country participants included and justified?",
+            "Is there an appropriate gender balance in leadership roles?"
+          ],
+          "must_include": [
+            "Partner table: Organisation name, Country, Type (Academic/SME/Industry/NGO/Public), Key expertise",
+            "Complementarity narrative: why each partner is necessary and non-substitutable",
+            "Consortium assembly rationale (pre-existing relationships, prior projects, open call)",
+            "Gender balance note for named project leadership and WP leaders",
+            "Third-country partner justification (if applicable)"
+          ],
+          "keywords_to_cover": [
+            "consortium", "partner", "complementarity", "expertise", "capacity",
+            "collaboration", "gender", "diversity", "third country", "network"
+          ]
+        },
+        {
+          "id": "resources",
+          "title": "3.4 Resources and Costs",
+          "order": 4,
+          "required": true,
+          "criterion": "implementation",
+          "word_count_guidance": { "min": 200, "recommended": 350, "max": 600 },
+          "key_questions": [
+            "Is the total requested budget proportionate to the project scope?",
+            "Are person-months justified against specific tasks?",
+            "Is major equipment essential and not available otherwise?",
+            "Is subcontracting necessary and limited to < 30% of total costs?"
+          ],
+          "must_include": [
+            "Budget summary table: per partner, per cost category (Personnel, Equipment, Travel, Other Direct, Indirect)",
+            "Person-month justification narrative linked to WP tasks",
+            "Equipment justification (items > €50k must be individually justified)",
+            "Subcontracting justification and identification of subcontractors (if known)",
+            "Note that indirect costs are calculated at 25% flat rate (HE standard)",
+            "Value-for-money statement"
+          ],
+          "keywords_to_cover": [
+            "budget", "cost", "person-month", "equipment", "subcontracting", "travel",
+            "personnel", "indirect", "overhead", "justification", "resources"
+          ]
+        }
+      ]
+    }
+  ],
+
+  "compliance_checklist": [
+    {
+      "id": "ethics_self_assessment",
+      "label": "Ethics self-assessment completed and all flagged issues addressed",
+      "category": "ethics",
+      "required": true,
+      "part": "A + B annex",
+      "section_reference": "Part A Ethics Issues Table; Part B Ethics Annex",
+      "check_description": "Complete the ethics issues table in Part A. If any issue is flagged (human subjects/participants, personal data processing, dual-use research, animals, human embryos/foetal tissue, developing countries, environment, exclusive focus on civil applications, privacy/surveillance, autonomous systems), a full Ethics Self-Assessment must be included in the proposal as an annex. Failure to disclose a relevant ethics issue can result in rejection after evaluation.",
+      "failure_consequence": "Proposal may be flagged for mandatory Ethics Review, or rejected if undisclosed ethics issue emerges post-evaluation.",
+      "tips": [
+        "Read each ethics category carefully — it is easy to miss e.g., 'processing personal data' for any user study",
+        "Include a brief ethics paragraph in the relevant technical section even if no issues are flagged",
+        "GDPR compliance must be addressed if processing any personal/identifiable data"
+      ]
+    },
+    {
+      "id": "data_management_plan",
+      "label": "Data Management Plan (DMP) referenced and D1.1 scheduled by Month 6",
+      "category": "open_science",
+      "required": true,
+      "part": "B Section 2.4 + WP1 deliverables",
+      "section_reference": "Section 2.4 (Open Science), WP1 (Management)",
+      "check_description": "All HE projects must produce a DMP as a mandatory deliverable (D1.1) no later than Month 6. The proposal must reference this requirement. The DMP must follow the EC template (or a domain-appropriate equivalent) and address: data types, FAIR principles, repository choice, access conditions, and any ethical/commercial constraints on openness.",
+      "failure_consequence": "Missing DMP reference is a weakness reviewers will flag. Failure to submit DMP after grant signature risks non-compliance.",
+      "tips": [
+        "Name the repository you will use (Zenodo, EU Open Research Repository, domain-specific)",
+        "If data cannot be fully open (IP, privacy), state the reason and what CAN be shared",
+        "Reference Science Europe's practical guide or the EC's DMP template"
+      ]
+    },
+    {
+      "id": "open_access_publications",
+      "label": "Open access commitment for all peer-reviewed publications stated",
+      "category": "open_science",
+      "required": true,
+      "part": "B Section 2.3 / 2.4",
+      "section_reference": "Section 2.3 (Dissemination) and/or Section 2.4 (Open Science)",
+      "check_description": "Article 17 of the HE MGA mandates immediate open access for all peer-reviewed publications. Authors must retain the right to make publications open access (via journal gold OA or green OA in a repository). Embargo periods are not allowed. APC costs are eligible under the grant.",
+      "failure_consequence": "Non-compliance post-award can lead to financial corrections.",
+      "tips": [
+        "State you will use either Gold OA journals or Green OA via repository (Zenodo, institutional repo)",
+        "Note that APC (article processing charges) are eligible project costs",
+        "Plan-S compliance is required; check publisher policies"
+      ]
+    },
+    {
+      "id": "dissemination_exploitation_plan",
+      "label": "Dissemination and Exploitation Plan included (or referenced as early deliverable)",
+      "category": "dissemination",
+      "required": true,
+      "part": "B Section 2.3",
+      "section_reference": "Section 2.3, WP1 deliverable",
+      "check_description": "A Communication, Dissemination and Exploitation Plan must be described in the proposal and delivered as an early project deliverable (typically D1.2, Month 3). The plan should cover: target audiences, dissemination channels, communication activities, exploitation routes, and timelines.",
+      "failure_consequence": "Absence is a clear weakness on the Impact criterion.",
+      "tips": [
+        "Include a simple table: Activity | Target Audience | Channel | Timing | Lead Partner",
+        "Distinguish between dissemination (to peers), communication (to the public), and exploitation (to users/market)",
+        "Name specific journals and conferences, not just 'high-impact journals'"
+      ]
+    },
+    {
+      "id": "risk_management",
+      "label": "Risk register included with likelihood, impact, and mitigation measures",
+      "category": "management",
+      "required": true,
+      "part": "B Section 3.2",
+      "section_reference": "Section 3.2 (Management Structure)",
+      "check_description": "A risk register table with at least 5 risks covering technical, financial, consortium, regulatory, and external risks. Each risk should have: description, likelihood (H/M/L), impact (H/M/L), mitigation measure, and responsible partner.",
+      "failure_consequence": "Missing risk table is consistently flagged in reviewer comments and lowers Implementation score.",
+      "tips": [
+        "Include both technical/scientific risks AND consortium/management risks",
+        "Mitigation must be specific (not 'we will monitor this risk')",
+        "Consider: partner withdrawal, delays in regulatory approval, technology readiness, supply chain"
+      ]
+    },
+    {
+      "id": "gender_dimension",
+      "label": "Gender dimension in research content addressed (if relevant)",
+      "category": "equality",
+      "required": false,
+      "recommended": true,
+      "part": "B (throughout, especially Excellence and Implementation)",
+      "section_reference": "Section 1.2 (Methodology), Section 3.3 (Consortium)",
+      "check_description": "Horizon Europe requires consideration of the gender dimension in research and innovation content, where relevant (Article 14 MGA). This includes: sex/gender analysis in study design, gender-disaggregated data, and ensuring research results are relevant for all groups. Additionally, gender balance in the project team/leadership should be addressed.",
+      "failure_consequence": "Absence where relevant is a reviewers' weakness comment. Some calls make this a mandatory checkbox.",
+      "tips": [
+        "If gender is not relevant to your research content, state why briefly",
+        "Mention gender balance in team leadership in Section 3.3",
+        "Human studies must analyse results by sex/gender unless scientifically justified otherwise"
+      ]
+    },
+    {
+      "id": "gdpr_compliance",
+      "label": "GDPR and data protection compliance addressed",
+      "category": "ethics",
+      "required": false,
+      "recommended": true,
+      "part": "B Section 2.4 / Ethics Annex",
+      "section_reference": "Section 2.4, Ethics Self-Assessment",
+      "check_description": "If the project processes personal data (user studies, health data, location data, surveys, etc.), GDPR compliance must be explicitly addressed: lawful basis for processing, data minimisation, anonymisation/pseudonymisation, and rights of data subjects.",
+      "failure_consequence": "Ethics review flag if undisclosed.",
+      "tips": [
+        "Name the Data Protection Officer (DPO) of the coordinating institution",
+        "State the lawful basis (consent, legitimate interest, contract, etc.)",
+        "Include Data Processing Agreements between partners in consortium agreement"
+      ]
+    },
+    {
+      "id": "open_science_other",
+      "label": "Other open science practices addressed (open methods, open peer review, citizen science)",
+      "category": "open_science",
+      "required": false,
+      "recommended": true,
+      "part": "B Section 2.4",
+      "section_reference": "Section 2.4 (Open Science)",
+      "check_description": "HE encourages a broad approach to open science beyond open access and open data: pre-registration of studies, open methods/protocols, citizen science, open peer review, and engagement with the European Open Science Cloud (EOSC).",
+      "failure_consequence": "Optional but increasingly valued by reviewers; adds differentiation.",
+      "tips": [
+        "Mention EOSC interoperability if depositing datasets",
+        "Pre-register randomised trials or confirmatory studies on OSF, ClinicalTrials.gov, etc.",
+        "Citizen science activities count as both open science AND impact/dissemination"
+      ]
+    },
+    {
+      "id": "security_scrutiny",
+      "label": "Security scrutiny addressed (if dual-use or sensitive research)",
+      "category": "ethics",
+      "required": false,
+      "recommended": false,
+      "part": "A Ethics Issues Table + Ethics Annex",
+      "section_reference": "Ethics self-assessment",
+      "check_description": "Projects involving research with potential dual-use implications (cybersecurity, AI for surveillance, autonomous weapons, synthetic biology, etc.) must address security scrutiny in the ethics self-assessment. The EC may impose additional review requirements.",
+      "failure_consequence": "Non-disclosure can lead to post-evaluation rejection or contract conditions.",
+      "tips": [
+        "Even if research is primarily civil/beneficial, flag dual-use potential transparently",
+        "Reference the EU Dual-Use Regulation (2021/821) where applicable"
+      ]
+    },
+    {
+      "id": "financial_capacity",
+      "label": "Financial and operational capacity of all partners verified",
+      "category": "legal",
+      "required": true,
+      "part": "A (Part A entity data + portal validation)",
+      "section_reference": "Part A (LEAR validation in Funding & Tenders Portal)",
+      "check_description": "All partner organisations must be registered in the EU Funding & Tenders Portal with validated PIC numbers, and their LEAR must have confirmed legal/financial data. Organisations that cannot demonstrate financial viability may require pre-financing guarantees.",
+      "failure_consequence": "Missing PIC or unvalidated entity blocks submission.",
+      "tips": [
+        "Check PIC validation status 4+ weeks before submission deadline",
+        "SMEs must upload their last two years of audited accounts",
+        "New organisations (< 2 years old) may need a financial guarantee"
+      ]
+    },
+    {
+      "id": "consortium_agreement",
+      "label": "Consortium Agreement (CA) commitment included",
+      "category": "legal",
+      "required": true,
+      "part": "B Section 3.2 or dedicated statement",
+      "section_reference": "Section 3.2 (Management)",
+      "check_description": "HE MGA Article 14 requires all multi-beneficiary projects to sign a Consortium Agreement before the Grant Agreement is signed (or as soon as possible thereafter). The proposal should state that a CA will be established, covering: IP ownership, exploitation rights, publication rights, liability, and governance.",
+      "failure_consequence": "Not a rejection criterion at evaluation stage, but failure to sign a CA post-award is a contractual breach.",
+      "tips": [
+        "Reference DESCA (Development of a Simplified Consortium Agreement) as your CA template",
+        "Start CA negotiations early — they often take 3–6 months",
+        "Include foreground/background IP provisions in CA discussions from day one"
+      ]
+    },
+    {
+      "id": "page_limit_compliance",
+      "label": "Proposal does not exceed the page limit for the specific call",
+      "category": "compliance",
+      "required": true,
+      "part": "B (entire)",
+      "section_reference": "Call topic text, Section 5",
+      "check_description": "Reviewers are instructed to stop reading at the page limit. Content beyond the limit is not evaluated. Verify the exact page limit in the call topic text — it may differ from the default 45 pages. Check that the font, margin, and spacing requirements are met (automated checks may apply).",
+      "failure_consequence": "Exceeding the page limit means content is ignored. Formal non-compliance can result in inadmissibility.",
+      "tips": [
+        "Export as PDF and check page count before submission",
+        "References, CVs, and letters of intent do not count toward the page limit (verify for your call)",
+        "Use tables and diagrams to convey information densely within the page budget"
+      ]
+    }
+  ],
+
+  "glossary": {
+    "RIA": "Research and Innovation Action — primarily generates new knowledge; typically fundamental/applied research up to TRL 4–5",
+    "IA": "Innovation Action — closer to market; typically validation/demonstration/first deployment up to TRL 6–8",
+    "TRL": "Technology Readiness Level (1–9); TRL 1 = basic research, TRL 9 = deployment in operational environment",
+    "WP": "Work Package — a coherent bundle of tasks within the project",
+    "MS": "Milestone — a verifiable internal achievement that enables go/no-go decisions",
+    "D": "Deliverable — an output submitted to the EC (document, dataset, software, prototype)",
+    "DMP": "Data Management Plan — mandatory EC deliverable describing how research data will be managed",
+    "FAIR": "Findable, Accessible, Interoperable, Reusable — principles for research data management",
+    "MGA": "Model Grant Agreement — the standard contract between the EC and grant beneficiaries",
+    "EOSC": "European Open Science Cloud — EU initiative for open sharing of research data and services",
+    "PIC": "Participant Identification Code — unique identifier in the EU Funding & Tenders Portal",
+    "LEAR": "Legal Entity Appointed Representative — the validated contact for an organisation in the portal",
+    "DESCA": "Development of a Simplified Consortium Agreement — widely used CA template for HE projects",
+    "APC": "Article Processing Charge — fee for Gold Open Access publication (eligible project cost in HE)"
+  },
+
+  "keywords_index": {
+    "excellence": [
+      "novel", "innovative", "beyond state of the art", "state of the art", "methodology",
+      "objectives", "ambition", "feasibility", "interdisciplinary", "TRL", "proof of concept",
+      "breakthrough", "gap", "limitation", "advance", "rigorous", "validation", "success criteria"
+    ],
+    "impact": [
+      "outcome", "impact", "exploitation", "dissemination", "open access", "FAIR",
+      "stakeholders", "beneficiaries", "market", "policy", "pathway", "IP", "patent",
+      "commercialisation", "societal", "economic", "indicator", "KPI", "SDG", "open science"
+    ],
+    "implementation": [
+      "work package", "WP", "milestone", "deliverable", "Gantt", "risk", "management",
+      "consortium", "budget", "person-months", "complementarity", "timeline", "critical path",
+      "governance", "coordinator", "steering", "resources", "subcontracting", "equipment"
+    ]
+  }
+}

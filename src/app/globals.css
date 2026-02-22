@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ─────────────────────────────────────────────────────────────── */
+
+:root {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+}
+
+html {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 min-h-screen;
+}
+
+/* ── Prose (Markdown rendered output) ───────────────────────────────── */
+
+.prose-report {
+  @apply max-w-none text-slate-800;
+}
+
+.prose-report h1 { @apply text-2xl font-bold mt-8 mb-4 text-slate-900; }
+.prose-report h2 { @apply text-xl font-semibold mt-6 mb-3 text-slate-800 border-b border-slate-200 pb-1; }
+.prose-report h3 { @apply text-lg font-semibold mt-5 mb-2 text-slate-700; }
+.prose-report h4 { @apply text-base font-semibold mt-4 mb-1 text-slate-700; }
+
+.prose-report p   { @apply mb-3 leading-relaxed; }
+.prose-report ul  { @apply list-disc pl-5 mb-3 space-y-1; }
+.prose-report ol  { @apply list-decimal pl-5 mb-3 space-y-1; }
+.prose-report li  { @apply leading-relaxed; }
+
+.prose-report blockquote {
+  @apply border-l-4 border-slate-300 pl-4 py-1 my-3 text-slate-600 italic;
+}
+
+.prose-report table {
+  @apply w-full border-collapse text-sm mb-4;
+}
+.prose-report th {
+  @apply bg-slate-100 text-left px-3 py-2 border border-slate-200 font-semibold;
+}
+.prose-report td {
+  @apply px-3 py-2 border border-slate-200 align-top;
+}
+.prose-report tr:nth-child(even) td {
+  @apply bg-slate-50;
+}
+
+.prose-report code {
+  @apply bg-slate-100 rounded px-1 py-0.5 text-sm font-mono text-slate-700;
+}
+.prose-report pre {
+  @apply bg-slate-100 rounded-lg p-4 overflow-x-auto mb-4;
+}
+.prose-report pre code {
+  @apply bg-transparent p-0 text-slate-700;
+}
+
+.prose-report details {
+  @apply border border-slate-200 rounded-lg p-3 mb-3;
+}
+.prose-report summary {
+  @apply cursor-pointer font-medium text-slate-700 select-none;
+}
+
+.prose-report hr {
+  @apply border-slate-200 my-6;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────────────── */
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { @apply bg-transparent; }
+::-webkit-scrollbar-thumb { @apply bg-slate-300 rounded-full; }
+::-webkit-scrollbar-thumb:hover { @apply bg-slate-400; }
