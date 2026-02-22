@@ -12,6 +12,8 @@ export interface DraftMeta {
   wordCount: number;
   createdAt: string;
   updatedAt: string;
+  /** The wizard session that generated this draft (used for Regenerate). */
+  wizardId?: string;
 }
 
 export interface Draft extends DraftMeta {

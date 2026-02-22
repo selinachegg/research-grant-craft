@@ -62,12 +62,15 @@ export default function EditorPage() {
   const router = useRouter();
 
   const draftId = params.draftId as string;
-  const fromWizard = searchParams.get('fromWizard') === '1';
+  // wizardId from URL (first load) or from the saved draft (subsequent loads)
+  const urlWizardId = searchParams.get('wizardId');
 
   const [content, setContent] = useState('');
   const [title, setTitle] = useState('Untitled proposal');
   const [schemeId, setSchemeId] = useState('horizon_europe_ria_ia');
   const [createdAt] = useState(new Date().toISOString());
+  // Keep wizardId in state so Regenerate works after navigation
+  const [wizardId, setWizardId] = useState<string | null>(urlWizardId);
 
   const [view, setView] = useState<'split' | 'editor' | 'preview'>('split');
   const [generating, setGenerating] = useState(false);
@@ -83,12 +86,15 @@ export default function EditorPage() {
       setContent(existing.content);
       setTitle(existing.title);
       setSchemeId(existing.schemeId);
+      // Restore wizardId from saved draft if not already in URL
+      if (existing.wizardId && !urlWizardId) setWizardId(existing.wizardId);
       return;
     }
 
-    // New draft from wizard
-    if (fromWizard) {
-      const wizard = loadWizardState();
+    // New draft from wizard — wizardId tells us which session to load
+    const wid = urlWizardId;
+    if (wid) {
+      const wizard = loadWizardState(wid);
       setTitle(
         wizard.fullTitle
           ? `${wizard.acronym ? wizard.acronym + ' — ' : ''}${wizard.fullTitle}`
@@ -115,11 +121,12 @@ export default function EditorPage() {
           wordCount: wordCount(text),
           createdAt,
           updatedAt: new Date().toISOString(),
+          wizardId: wizardId ?? undefined,
         });
         setSaveStatus('saved');
       }, 800);
     },
-    [draftId, schemeId, createdAt],
+    [draftId, schemeId, createdAt, wizardId],
   );
 
   function handleContentChange(text: string) {
@@ -130,7 +137,13 @@ export default function EditorPage() {
   async function handleGenerate(wizardOverride?: ReturnType<typeof loadWizardState>) {
     setGenerating(true);
     try {
-      const wizard = wizardOverride ?? loadWizardState();
+      // Use provided override, or load from the linked wizard session, or empty state
+      const wizard = wizardOverride ?? (wizardId ? loadWizardState(wizardId) : null);
+      if (!wizard) {
+        alert('No wizard session linked to this draft. Please start a new proposal from the home page.');
+        setGenerating(false);
+        return;
+      }
       const config = loadLlmConfig();
       const result = await generateDraft(wizard, config);
       setContent(result.draftMarkdown);
@@ -166,6 +179,7 @@ export default function EditorPage() {
       wordCount: wordCount(content),
       createdAt,
       updatedAt: new Date().toISOString(),
+      wizardId: wizardId ?? undefined,
     });
     router.push(`/review/${draftId}`);
   }

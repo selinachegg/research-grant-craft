@@ -34,9 +34,9 @@
 
 ## Screenshots
 
-| Wizard intake | Draft editor | Reviewer report |
-|:---:|:---:|:---:|
-| ![Wizard intake](public/screenshots/wizard_intake.png) | ![Draft editor](public/screenshots/draft_editor.png) | ![Reviewer report](public/screenshots/reviewer_report.png) |
+| Wizard intake | Draft editor | Reviewer report | AI settings |
+|:---:|:---:|:---:|:---:|
+| ![Wizard intake](public/screenshots/wizard_intake.png) | ![Draft editor](public/screenshots/draft_editor.png) | ![Reviewer report](public/screenshots/reviewer_report.png) | ![AI settings](public/screenshots/settings.png) |
 
 ---
 
@@ -84,11 +84,15 @@ preset or enter a custom endpoint:
 | Provider | Endpoint | Notes |
 |----------|----------|-------|
 | **OpenAI** (`gpt-4o`, `gpt-4o-mini`) | `https://api.openai.com/v1` | Get a key at [platform.openai.com](https://platform.openai.com/api-keys) |
+| **OpenRouter** | `https://openrouter.ai/api/v1` | Access 100+ models with one key at [openrouter.ai](https://openrouter.ai) |
 | **Ollama** (local, free) | `http://localhost:11434/v1` | Install [Ollama](https://ollama.com), run `ollama pull llama3` — no data leaves your machine |
 | **Custom** | Any URL | Any OpenAI-compatible endpoint (`/chat/completions`) |
 
-Use the **Test connection** button on the settings page to verify your key works
-before generating a full draft.
+Use the **Test connection** button to verify your key before generating a full draft.
+
+**Example — OpenRouter + `openai/gpt-4o-mini`:**
+
+![AI configuration test with OpenRouter](public/screenshots/IA_config_test.png)
 
 > **Privacy:** In Live AI mode your draft text and wizard answers are sent to
 > the provider you configure. In Mock mode nothing leaves your browser.
