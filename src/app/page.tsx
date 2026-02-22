@@ -7,7 +7,6 @@ import { loadWizardIndex, deleteWizardState } from '@/lib/wizard/store';
 import type { WizardMeta } from '@/lib/wizard/store';
 import { loadDraftIndex, deleteDraft } from '@/lib/drafts/store';
 import type { DraftMeta } from '@/lib/drafts/store';
-import { countries, getFlagEmoji } from '@/lib/countries';
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -249,20 +248,6 @@ export default function HomePage() {
             Horizon&nbsp;Europe proposal.
           </span>
         </h1>
-
-        {/* EU member state flags */}
-        <div className="flex flex-wrap items-center justify-center gap-1.5 mb-6 max-w-lg mx-auto">
-          {countries.map((c) => (
-            <span
-              key={c.code}
-              title={c.name}
-              className="text-2xl leading-none select-none"
-              aria-label={c.name}
-            >
-              {getFlagEmoji(c.code)}
-            </span>
-          ))}
-        </div>
 
         <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto mb-8 leading-relaxed">
           A structured intake wizard generates an AI-assisted draft, then a deterministic
